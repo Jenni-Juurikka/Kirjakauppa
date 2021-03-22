@@ -5,7 +5,7 @@ import Navbari from './components/Navbari';
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <Navbari />
     </div>
   );
