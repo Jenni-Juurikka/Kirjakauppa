@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Button, CardColumns, Row } from "react-bootstrap";
+import ostoskori from '../images/shopping-cart.png';
 
 function Cardit() {
   return (
@@ -14,7 +15,7 @@ function Cardit() {
             <Card.Body>
               <Card.Title>Kirja</Card.Title>
               <Card.Text>Kirja</Card.Text>
-              <Button>Lisää koriin</Button>
+              <Button><img src={ostoskori} /></Button>
             </Card.Body>
           </Card>
 
