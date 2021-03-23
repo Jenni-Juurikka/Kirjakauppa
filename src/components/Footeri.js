@@ -5,17 +5,18 @@ function Footeri() {
         <footer className="pt-4 pt-md-5 border-top ">
         <div className="row">
           <div className="col-12 col-md">
-            <small className="d-block mb-3 text-muted">&copy; {new Date().getFullYear()}</small>
+            <small className="d-block mb-3 text-muted">&copy; <a>Kirjakauppa</a> {new Date().getFullYear()}</small>
           </div>
           <div className="col-6 col-md">
-            <h5>Features</h5>
+            <h5>Aukiolo</h5>
             <ul className="list-unstyled text-small">
-              <li><a className="link-secondary" href="#">Cool stuff</a></li>
-              <li><a className="link-secondary" href="#">Random feature</a></li>
-              <li><a className="link-secondary" href="#">Team feature</a></li>
-              <li><a className="link-secondary" href="#">Stuff for developers</a></li>
-              <li><a className="link-secondary" href="#">Another one</a></li>
-              <li><a className="link-secondary" href="#">Last time</a></li>
+              <li>Maanantai 7.00 - 19.00</li>
+              <li>Tiistai 7.00 - 19.00</li>
+              <li>Keskiviikko 7.00 - 19.00</li>
+              <li>Torstai 7.00 - 19.00</li>
+              <li>Perjantai 7.00 - 19.00</li>
+              <li>Launtai 9.00 - 17.00</li>
+              <li>Sunnutai 10.00 - 15.00</li>
             </ul>
           </div>
           <div className="col-6 col-md">
