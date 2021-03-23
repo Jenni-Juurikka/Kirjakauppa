@@ -6,7 +6,7 @@ function Navbari() {
       
       
       <a className="navbar-brand" href="#">
-        <img src={kirjakauppa} style={{width: 100}} />
+        <img src={kirjakauppa} style={{height: 70}} />
       </a>
       <button
         className="navbar-toggler"
