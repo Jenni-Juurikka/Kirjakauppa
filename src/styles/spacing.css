@@ -6,4 +6,9 @@
     font-weight: 900;
     height: 39px;
     padding-top: 9px;
+} .hinta {
+    font-size: 1.50rem;
+    text-align: center;
+} .tuote {
+    text-align: center;
 }

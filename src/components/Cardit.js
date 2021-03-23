@@ -14,9 +14,11 @@ function Cardit() {
               src="https://images.all-free-download.com/images/graphiclarge/books_of_this_highdefinition_picture_2_166408.jpg"
             />
             <Card.Body>
-              <Card.Title>Kirja</Card.Title>
-              <Card.Text>Kirja</Card.Text>
+              <Card.Title className="tuote">Kauhistuttava kirja</Card.Title>
+              <Card.Text className="hinta">15€</Card.Text>
+              <div className="text-center">
               <Button className="cart">Lisää koriin</Button>
+              </div>
             </Card.Body>
           </Card>
 
@@ -26,9 +28,11 @@ function Cardit() {
               src="https://images.all-free-download.com/images/graphiclarge/books_of_this_highdefinition_picture_2_166408.jpg"
             />
             <Card.Body>
-              <Card.Title>Kirja</Card.Title>
-              <Card.Text>Kirja</Card.Text>
+            <Card.Title className="tuote">Kirja</Card.Title>
+              <Card.Text className="hinta">15€</Card.Text>
+              <div className="text-center">
               <Button className="cart">Lisää koriin</Button>
+              </div>
             </Card.Body>
           </Card>
 
@@ -38,9 +42,11 @@ function Cardit() {
               src="https://images.all-free-download.com/images/graphiclarge/books_of_this_highdefinition_picture_2_166408.jpg"
             />
             <Card.Body>
-              <Card.Title>Kirja</Card.Title>
-              <Card.Text>Kirja</Card.Text>
+            <Card.Title className="tuote">Kirja</Card.Title>
+              <Card.Text className="hinta">15€</Card.Text>
+              <div className="text-center">
               <Button className="cart">Lisää koriin</Button>
+              </div>
             </Card.Body>
           </Card>
         </Row>

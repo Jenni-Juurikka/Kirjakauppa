@@ -20,21 +20,20 @@ function Footeri() {
             </ul>
           </div>
           <div className="col-6 col-md">
-            <h5>Resources</h5>
+            <h5>Yhteystiedot</h5>
             <ul className="list-unstyled text-small">
-              <li><a className="link-secondary" href="#">Resource</a></li>
-              <li><a className="link-secondary" href="#">Resource name</a></li>
-              <li><a className="link-secondary" href="#">Another resource</a></li>
-              <li><a className="link-secondary" href="#">Final resource</a></li>
+              <li><a>kirjakauppa@gmail.com</a></li>
+              <li><a>050133742069</a></li>
+              <li><a>Oulu, Saaristonkatu 6-10</a></li>
             </ul>
           </div>
           <div className="col-6 col-md">
-            <h5>About</h5>
+            <h5>Sosiaalinen media</h5>
             <ul className="list-unstyled text-small">
-              <li><a className="link-secondary" href="#">Team</a></li>
-              <li><a className="link-secondary" href="#">Locations</a></li>
-              <li><a className="link-secondary" href="#">Privacy</a></li>
-              <li><a className="link-secondary" href="#">Terms</a></li>
+              <li><a className="link-secondary" href="https://www.facebook.com/">Facebook</a></li>
+              <li><a className="link-secondary" href="https://www.instagram.com/tonyhawk/">Instagram</a></li>
+              <li><a className="link-secondary" href="https://twitter.com/">Twitter</a></li>
+              <li><a className="link-secondary" href="https://www.linkedin.com/">LinkedIn</a></li>
             </ul>
           </div>
         </div>
