@@ -1,5 +1,5 @@
 import React from 'react';
-import sijainti from '../images/sijainti.png';
+import logo from '../images/logo.png';
 
 function Footeri() {
     return (
@@ -7,7 +7,7 @@ function Footeri() {
         <div className="row">
           <div className="col-12 col-md">
             <small className="d-block mb-3 text-muted">&copy; <a>Kirjakauppa</a> {new Date().getFullYear()}</small>
-            <img style={{width: 300, height: 350}} src={sijainti} />
+            <img style={{width: 250, height: 250}} src={logo} />
           </div>
           <div className="col-6 col-md">
             <h5>Aukiolo</h5>
