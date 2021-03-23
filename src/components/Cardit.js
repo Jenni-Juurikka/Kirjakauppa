@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Button, CardColumns, Row } from "react-bootstrap";
 import ostoskori from '../images/shopping-cart.png';
+import '../styles/spacing.css'
 
 function Cardit() {
   return (
@@ -15,7 +16,7 @@ function Cardit() {
             <Card.Body>
               <Card.Title>Kirja</Card.Title>
               <Card.Text>Kirja</Card.Text>
-              <Button><img src={ostoskori} /></Button>
+              <Button className="cart">Lisää koriin</Button>
             </Card.Body>
           </Card>
 
@@ -27,7 +28,7 @@ function Cardit() {
             <Card.Body>
               <Card.Title>Kirja</Card.Title>
               <Card.Text>Kirja</Card.Text>
-              <Button>Lisää koriin</Button>
+              <Button className="cart">Lisää koriin</Button>
             </Card.Body>
           </Card>
 
@@ -39,7 +40,7 @@ function Cardit() {
             <Card.Body>
               <Card.Title>Kirja</Card.Title>
               <Card.Text>Kirja</Card.Text>
-              <Button>Lisää koriin</Button>
+              <Button className="cart">Lisää koriin</Button>
             </Card.Body>
           </Card>
         </Row>
