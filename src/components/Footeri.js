@@ -1,11 +1,13 @@
 import React from 'react';
+import sijainti from '../images/sijainti.png';
 
 function Footeri() {
     return (
-        <footer className="pt-4 pt-md-5 border-top ">
+        <footer className="pt-4 pt-md-5 border-top">
         <div className="row">
           <div className="col-12 col-md">
             <small className="d-block mb-3 text-muted">&copy; <a>Kirjakauppa</a> {new Date().getFullYear()}</small>
+            <img style={{width: 300, height: 350}} src={sijainti} />
           </div>
           <div className="col-6 col-md">
             <h5>Aukiolo</h5>
