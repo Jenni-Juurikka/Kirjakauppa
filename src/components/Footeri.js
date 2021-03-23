@@ -10,7 +10,7 @@ function Footeri() {
             <img style={{width: 200, height: 200}} src={logo} />
           </div>
           <div className="col-sm-12 col-md-6 col-lg-3">
-            <h5>Aukiolo</h5>
+            <h5>Aukioloajat</h5>
             <ul className="list-unstyled text-small">
               <li>Maanantai 7.00 - 19.00</li>
               <li>Tiistai 7.00 - 19.00</li>
