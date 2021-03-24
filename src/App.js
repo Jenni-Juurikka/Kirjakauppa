@@ -1,23 +1,29 @@
-import logo from './testi.jpg';
-import './App.css';
-import './styles/colors.css';
-import banneri from './images/banneri.png';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbari from './components/Navbari';
-import Footeri from './components/Footeri';
-import Cardit from './components/Cardit';
+import logo from "./testi.jpg";
+import "./App.css";
+import "./styles/colors.css";
+import banneri from "./images/banneri.png";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Footeri from "./components/Footeri";
+import Cardit from "./components/Cardit";
+import Navbari from "./components/Navbari"
+
 
 function App() {
   return (
     <div className="container">
-      <Navbari />
       <div className="bg-color">
-      <img src={banneri} class="img-fluid" alt="banneri" style={{width: 1150}}></img>
-      <br />
-      <Cardit />
+        <Navbari />
+        <img
+          src={banneri}
+          class="img-fluid"
+          alt="banneri"
+          style={{ width: 1150 }}
+        ></img>
+        <br />
+        <Cardit />
       </div>
       <Footeri />
-      </div>
+    </div>
   );
 }
 

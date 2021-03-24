@@ -1,45 +1,55 @@
-import kirjakauppa from "../images/kirjakauppa.png";
-import '../styles/colors.css'
-import logo1 from '../images/kirjakauppa.png'
-import {
-  Dropdown,
-  DropdownButton,
-  ButtonGroup,
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+import React from 'react';
+import { useEffect, useState } from 'react';
+import '../styles/colors.css' ;
+import logo1 from '../images/kirjakauppa.png' ;
+import { Link } from 'react-router-dom';
 
-function Navbari() {
-  return (
-    <Navbar className="bg-color" expand="lg" sticky="top">
-      <Navbar.Brand href="#home"><img src={logo1} style={{width: 200}} /></Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#link">Link</Nav.Link>
-          <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">
-              Another action
-            </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">
-              Separated link
-            </NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-success">Search</Button>
-        </Form>
-      </Navbar.Collapse>
-    </Navbar>
-  );
+
+const url = "https://localhost/kirjakauppa/";
+const error = "Ei toimi XD";
+
+export default function Navbari({url}) {
+  const [categories, setCategories] = useState([])
+
+  useEffect(async() => {
+    try {
+      const response = await fetch(url + 'search.php');
+      const json = await response.json();
+      if (response.ok) {
+        setCategories(json);
+      } else {
+        alert(json.error);
+      }
+    } catch (error) {
+      alert(error);
+      console.log("sdfisdiujdfijofdjidfgijofgdoijfgdiojdfgsoijfdgsoij")
+    }
+  }, [])
+
+
+return (
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown
+  </a>
+    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+      {categories.map(category => (
+        <li key={category.id}>
+          <Link
+          className="dropdown-item"
+          to={{
+            pathname: '/',
+            state: {
+              id: category.id,
+              name: category.name
+            }
+          }}
+            >{category.name}
+            </Link>
+        </li>
+      ))}
+  </ul>
+</nav>
+);
 }
-export default Navbari;
