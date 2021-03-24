@@ -4,7 +4,7 @@ import { useState, useEffect, Link } from "react";
 
 const url = "https://localhost/kirjakauppa/";
 
-export default function Navbari() {
+export default function Navbari({url}) {
   const [categories, setCategories] = useState([]);
 
   useEffect(async () => {
@@ -57,7 +57,7 @@ export default function Navbari() {
                   <Link
                     className="dropdown-item"
                     to={{
-                      pathname: "/",
+                      pathname: '/',
                       state: {
                         id: category.id,
                         name: category.name,
