@@ -7,7 +7,6 @@ import Footeri from "./components/Footeri";
 import Cardit from "./components/Cardit";
 import Navbari from "./components/Navbari"
 
-
 function App() {
   return (
     <div className="container">

@@ -52,7 +52,7 @@ export default function Navbari() {
               Dropdown
             </a>
             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-              {categories.map((category) => (
+              {categories.map(category => (
                 <li key={category.id}>
                   <Link
                     className="dropdown-item"
@@ -61,10 +61,9 @@ export default function Navbari() {
                       state: {
                         id: category.id,
                         name: category.name,
-                      },
+                      }
                     }}
-                  >
-                    {category.name}
+                  >{category.name}
                   </Link>
                 </li>
               ))}
