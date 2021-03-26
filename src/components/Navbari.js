@@ -2,14 +2,15 @@ import "../styles/colors.css";
 import logo1 from "../images/kirjakauppa.png";
 import { useState, useEffect, Link } from "react";
 
-const url = "https://localhost/kirjakauppa/";
+const URL = 'https://localhost/kirjakauppa/';
 
-export default function Navbari({url}) {
+export default function Navbari({URL}) {
   const [categories, setCategories] = useState([]);
+
 
   useEffect(async () => {
     try {
-      const response = await fetch(url + "products/search.php");
+      const response = await fetch(URL + 'products/getcategories.php');
       const json = await response.json();
       if (response.ok) {
         setCategories(json);
@@ -17,7 +18,7 @@ export default function Navbari({url}) {
         alert(json.error);
       }
     } catch (error) {
-      alert("ei toimi");
+      alert('ei toimi');
     }
   }, []);
 

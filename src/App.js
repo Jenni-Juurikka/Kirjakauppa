@@ -14,7 +14,7 @@ function App() {
         <Navbari />
         <img
           src={banneri}
-          class="img-fluid"
+          className="img-fluid"
           alt="banneri"
           style={{ width: 1150 }}
         ></img>
