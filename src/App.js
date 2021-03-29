@@ -3,11 +3,11 @@ import './App.css';
 import './styles/colors.css';
 import banneri from './images/banneri.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useState,useEffect} from 'react';
-import {Switch,Route, useLocation} from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import {Switch, Route, useLocation} from 'react-router-dom';
 import Footeri from './components/Footeri';
 import Cardit from './components/Cardit';
-import Navbari from './components/Navbari';
+import Navbaruusi from './components/Navbaruusi';
 import Home from './Home';
 
 
@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="container">
       <div className="bg-color">
-        <Navbari url={URL} setCategory={setCategory}/>
+        <Navbaruusi url={URL} setCategory={setCategory}/>
         <img
           src={banneri}
           className="img-fluid"

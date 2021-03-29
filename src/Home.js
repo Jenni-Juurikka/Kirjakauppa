@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 
 
-export  function Home({url,tuoteryhma}) {
+export default function Home({url,tuoteryhma}) {
     const [products, setProducts] = useState([]);
 
     useEffect(async() => {
