@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="container">
       <div className="bg-color">
-        <Navbari />
+        <Navbari url={URL} setCategory={setCategory}/>
         <img
           src={banneri}
           className="img-fluid"
