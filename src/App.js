@@ -7,7 +7,7 @@ import {useState, useEffect} from 'react';
 import {Switch, Route, useLocation} from 'react-router-dom';
 import Footeri from './components/Footeri';
 import Cardit from './components/Cardit';
-import Navbaruusi from './components/Navbaruusi';
+import Navbari from './components/Navbari';
 import Home from './Home';
 
 
@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="container">
       <div className="bg-color">
-        <Navbaruusi url={URL} setCategory={setCategory}/>
+        <Navbari url={URL} setCategory={setCategory}/>
         <img
           src={banneri}
           className="img-fluid"
