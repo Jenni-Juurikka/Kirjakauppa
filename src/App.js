@@ -1,4 +1,3 @@
-import logo from './testi.jpg';
 import './App.css';
 import './styles/colors.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
