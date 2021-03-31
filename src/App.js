@@ -1,7 +1,6 @@
 import logo from './testi.jpg';
 import './App.css';
 import './styles/colors.css';
-import banneri from './images/banneri.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState, useEffect} from 'react';
 import {Switch, Route, useLocation} from 'react-router-dom';
@@ -9,6 +8,7 @@ import Footeri from './components/Footeri';
 import Cardit from './components/Cardit';
 import Navbaruusi from './components/Navbaruusi';
 import Home from './Home';
+import Header from './components/header';
 
 
 const URL = "http://localhost/kirjakauppa/";
@@ -40,13 +40,7 @@ function App() {
     <div className="container">
       <div className="bg-color">
         <Navbaruusi url={URL} setCategory={setCategory}/>
-        <img
-          src={banneri}
-          className="img-fluid"
-          alt="banneri"
-          style={{ width: 1150 }}
-        ></img>
-        <br />
+        <Header/>
         <div id="content" className="container-fluid">
           <Switch>
             <Route path="/" render={() => <Home 
@@ -56,7 +50,7 @@ function App() {
               addToCart={addToCart}/>}
               exact
             />
-            
+            <Route/>
           </Switch>
         </div>
         <Cardit />

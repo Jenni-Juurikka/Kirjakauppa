@@ -24,19 +24,19 @@ export default function Navbaruusi({url, cart, setCategory}) {
 
     return (
         <div>
-            <ul>
+            <ul className="navbar-nav ml-auto">
                 <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" href="#" id=""></a>
                     <ul className="dropdown-menu" aria-aria-labelledby="dropdown">
                         {categories.map(tuoteryhma => (
-                            <li key={tuoteryhma.trnro}>
+                            <li key={tuoteryhma.id}>
                                 <Link 
                                     className="dropdown-item"
                                     to={{
                                         pathname: '/',
                                         state: {
-                                        id: tuoteryhma.trnro,
-                                        name: tuoteryhma.trnimi
+                                        id: tuoteryhma.id,
+                                        name: tuoteryhma.name
                                         }
                                     }}
                                     >{tuoteryhma.trnimi}
@@ -46,7 +46,7 @@ export default function Navbaruusi({url, cart, setCategory}) {
                     </ul>
                 </li>
             </ul>
-            <ul className="navba-nav ml-auto">
+            <ul className="navbar-nav-nav ml-auto">
                 <li className="nav-item">
                     <Cart cart={cart} />
                 </li>

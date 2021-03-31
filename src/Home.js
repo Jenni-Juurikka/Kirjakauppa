@@ -9,7 +9,7 @@ export default function Home({url, tuoteryhma, addToCart}) {
             let address = '';
         }
         try {
-            const response = await fetch(url + 'products/getproducts.php' + tuoteryhma?.trnro);
+            const response = await fetch(url + 'products/getproducts.php' + tuoteryhma?.id);
             const json = await response.json();
             if (response.ok) {
                 setProducts(json);
@@ -23,10 +23,10 @@ export default function Home({url, tuoteryhma, addToCart}) {
 
     return (
         <div>
-            <h3>Tuotteet ryhmästä {tuoteryhma?.trnimi}</h3>
+            <h3>Tuotteet ryhmästä {tuoteryhma?.id}</h3>
             {products.map(tuote => (
-                <div key={tuote.tuotenro}>
-                    <p>{tuote.tuotenimi}</p>
+                <div key={tuote.id}>
+                    <p>{tuote.name}</p>
                     <button className="btn btn-primary" type="button" onClick={e => addToCart(tuote)}>Lisää ostoskoriin</button>
                 </div>
             ))}
