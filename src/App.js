@@ -7,15 +7,22 @@ import {useState, useEffect} from 'react';
 import {Switch, Route, useLocation} from 'react-router-dom';
 import Footeri from './components/Footeri';
 import Cardit from './components/Cardit';
-import Navbari from './components/Navbari';
+import Navbaruusi from './components/Navbaruusi';
 import Home from './Home';
 
 
 const URL = "http://localhost/kirjakauppa/";
 function App() {
   const [tuoteryhma, setCategory] = useState(null);
+  const [cart, setCart] = useState([]);
 
   let location = useLocation();
+
+  useEffect(() => {
+    if ('cart' in localStorage) {
+      setCategory(JSON.parse(localStorage.getItem('cart')));
+    }
+  }, [])
 
   useEffect(() => {
     if (location.state!==undefined) {
@@ -23,10 +30,16 @@ function App() {
     }
   }, [location.state])
 
+  function addToCart(product) {
+    const newCart = [...cart,product];
+    setCart(newCart);
+    localStorage.setItem('cart',JSON.stringify(newCart));
+  }
+
   return (
     <div className="container">
       <div className="bg-color">
-        <Navbari url={URL} setCategory={setCategory}/>
+        <Navbaruusi url={URL} setCategory={setCategory}/>
         <img
           src={banneri}
           className="img-fluid"
@@ -38,7 +51,9 @@ function App() {
           <Switch>
             <Route path="/" render={() => <Home 
               url={URL}
-              tuoteryhma={tuoteryhma}/>}
+              tuoteryhma={tuoteryhma}
+              /*search={searchPhrase} */
+              addToCart={addToCart}/>}
               exact
             />
             
