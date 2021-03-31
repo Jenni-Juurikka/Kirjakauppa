@@ -9,7 +9,7 @@ export default function Home({url, tuoteryhma, addToCart}) {
             let address = '';
         }
         try {
-            const response = await fetch(url + 'products/getproducts.php' + tuoteryhma?.id);
+            const response = await fetch(url + 'products/getproducts.php/' + tuoteryhma?.id);
             const json = await response.json();
             if (response.ok) {
                 setProducts(json);

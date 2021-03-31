@@ -3,9 +3,10 @@ import {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Cart from './addToCart';
 
-// const url = 'http://localhost/kirjakauppa/'
+//const url = 'http://localhost/kirjakauppa/'
 export default function Navbaruusi({url, cart, setCategory}) {
-    const [categories, setCategories] = useState([])
+
+    const [categories, setCategories] = useState([]);
 
     useEffect(async() => {
         try {
@@ -45,7 +46,7 @@ export default function Navbaruusi({url, cart, setCategory}) {
                                             name: tuoteryhma.name
                                             }
                                         }}
-                                        >{tuoteryhma.trnimi}
+                                        >{tuoteryhma.name}
                                     </Link>
                                 </li>
                             ))}
