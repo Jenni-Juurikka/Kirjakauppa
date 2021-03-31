@@ -52,7 +52,7 @@ function App() {
             <Route/>
           </Switch>
         </div>
-        <Cardit />
+        {/* <Cardit /> */}
       </div>
       <Footeri />
     </div>

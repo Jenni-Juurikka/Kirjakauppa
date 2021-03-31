@@ -12,6 +12,8 @@ export default function Home({url, tuoteryhma, addToCart}) {
             const response = await fetch(url + 'products/getproducts.php/' + tuoteryhma?.id);
             const json = await response.json();
             if (response.ok) {
+                console.log(tuoteryhma?.id);
+                console.log(json);
                 setProducts(json);
             } else {
                 alert(json.error);
@@ -23,7 +25,7 @@ export default function Home({url, tuoteryhma, addToCart}) {
 
     return (
         <div>
-            <h3>Tuotteet ryhmästä {tuoteryhma?.id}</h3>
+            <h3>Tuotteet ryhmästä {tuoteryhma?.name}</h3>
             {products.map(tuote => (
                 <div key={tuote.id}>
                     <p>{tuote.name}</p>
