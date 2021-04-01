@@ -5,20 +5,30 @@ export default function Home({url, tuoteryhma, addToCart}) {
     const [products, setProducts] = useState([]);
 
     useEffect(async() => {
-        //if (tuoteryhma !== null /*|| search !== ''*/) {
-        //    let address = '';
-        //}
-        try {
-            const response = await fetch(url + 'products/getproducts.php/' + tuoteryhma?.id);
-            const json = await response.json();
-            if (response.ok) {
-                setProducts(json);
-            } else {
-                alert(json.error);
+        if (tuoteryhma !== null /*|| search !== ''*/) {
+            let address = '';
+
+            if (tuoteryhma !== null) {
+                address = url + 'products/getproducts.php/' + tuoteryhma?.id;
+            } 
+            // else if (search !== null) {
+            //    address = url 'search';
+            //}
+
+
+            try {
+                const response = await fetch(url + 'products/getproducts.php/' + tuoteryhma?.id);
+                const json = await response.json();
+                if (response.ok) {
+                    setProducts(json);
+                } else {
+                    alert(json.error);
+                }
+            } catch (error) {
+                alert(error);
             }
-        } catch (error) {
-            alert(error);
         }
+        
     }, [tuoteryhma])
 
     return (
