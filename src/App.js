@@ -45,7 +45,7 @@ function App() {
             <Route path="/" render={() => <Home 
               url={URL}
               tuoteryhma={tuoteryhma}
-              /*search={searchPhrase} */
+              /*search={searchPhrase}*/ 
               addToCart={addToCart}/>}
               exact
             />

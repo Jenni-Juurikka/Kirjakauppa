@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 
 
-export default function Home({url, tuoteryhma, addToCart}) {
+export default function Home({url, tuoteryhma, search, addToCart}) {
     const [products, setProducts] = useState([]);
 
     useEffect(async() => {
@@ -10,14 +10,13 @@ export default function Home({url, tuoteryhma, addToCart}) {
 
             if (tuoteryhma !== null) {
                 address = url + 'products/getproducts.php/' + tuoteryhma?.id;
-            } 
-            // else if (search !== null) {
-            //    address = url 'search';
-            //}
+            } /*else if (search !== null) {
+                address = url + 'products/search.php/' + search;
+            }*/
 
 
             try {
-                const response = await fetch(url + 'products/getproducts.php/' + tuoteryhma?.id);
+                const response = await fetch(address);
                 const json = await response.json();
                 if (response.ok) {
                     setProducts(json);
@@ -29,7 +28,7 @@ export default function Home({url, tuoteryhma, addToCart}) {
             }
         }
         
-    }, [tuoteryhma])
+    }, [tuoteryhma,search])
 
     return (
         <div>

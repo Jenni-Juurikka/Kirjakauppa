@@ -54,7 +54,7 @@ export default function Navbaruusi({url, cart, setCategory}) {
                     </li>
                 </ul>
                 <ul className="navbar-nav-nav ml-auto">
-                    <li className="nav-item">
+                    <li className="nav-link">
                         <Cart cart={cart} />
                     </li>
                 </ul>
