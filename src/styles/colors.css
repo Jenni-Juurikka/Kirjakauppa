@@ -3,5 +3,20 @@
 }
 
 nav {
-    background-color:#ff9942 ;
+    background-color:#ff9942;
+}
+
+nav ul .dropdown-menu {
+    background-color:#ff9942;
+}
+
+nav ul .dropdown-menu :hover {
+    background-color:#ffd688;
+}
+
+
+.btn-primary {
+    background-color:#ff9942 !important;
+    border-color:#ff9942 !important;
+    color: black !important;
 }

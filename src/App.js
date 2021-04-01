@@ -38,9 +38,10 @@ function App() {
   return (
     <div className="container">
       <div className="bg-color">
-        <Navbaruusi url={URL} setCategory={setCategory}/>
         <Header/>
-        <div id="content" className="container-fluid">
+        <Navbaruusi url={URL} setCategory={setCategory}/>
+        
+        <div id="content" className="container-fluid p-2 p-sm-3 p-lg-4">
           <Switch>
             <Route path="/" render={() => <Home 
               url={URL}
