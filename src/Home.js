@@ -38,7 +38,9 @@ export default function Home({url, tuoteryhma, search, addToCart}) {
                 {products.map(tuote => (
                     <div className="col-6 col-md-4 col-lg-3 col-xl-2" key={tuote.id}>
                         {/* <img {tuote.image} /> */}
-                        <p>{tuote.name}</p>
+                        <h5>{tuote.name}</h5>
+                        <p>{tuote.author}</p>
+                        <p>{tuote.price}</p>
                         <button className="btn btn-primary" type="button" onClick={e => addToCart(tuote)}>Lisää ostoskoriin</button>
                     </div>
                 ))}
