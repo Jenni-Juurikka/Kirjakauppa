@@ -36,8 +36,9 @@ function App() {
   }
 
   return (
+  <div className="bg-color">
     <div className="container">
-      <div className="bg-color">
+    <div className="page-color">
         <Header/>
         <Navbaruusi url={URL} setCategory={setCategory}/>
         
@@ -54,9 +55,11 @@ function App() {
           </Switch>
         </div>
         {/* <Cardit /> */}
-      </div>
+    
       <Footeri />
+      </div>
     </div>
+  </div>
   );
 }
 
