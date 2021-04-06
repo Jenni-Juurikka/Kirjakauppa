@@ -3,7 +3,7 @@ import logo from '../images/logo.png';
 
 function Footeri() {
     return (
-        <footer className="pt-4 pt-md-5 border-top">
+        <footer className="pt-4 pt-md-5 ml-3 border-top">
         <div className="row">
           <div className="col-sm-12 col-md-6 col-lg-3">
             <small className="d-block mb-3 text-muted">&copy; <a>Kirjakauppa</a> {new Date().getFullYear()}</small>

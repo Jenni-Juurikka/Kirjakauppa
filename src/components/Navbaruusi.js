@@ -2,7 +2,7 @@ import React from 'react';
 import {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Cart from './addToCart';
-import productCart from './productCart';
+import '../styles/colors.css';
 
 //const url = 'http://localhost/kirjakauppa/'
 export default function Navbaruusi({url, cart, setCategory}) {
@@ -25,16 +25,19 @@ export default function Navbaruusi({url, cart, setCategory}) {
     }, []);
 
     return (
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Valikko</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-md navbar-light">
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" 
+                aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav ml-auto">
-                    <li className="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Tuoteryhmät </a>
+            <a className="navbar-brand mr-auto p-2" href="#">Kirjakauppa</a>
+            <div className="collapse navbar-collapse" id="navbar">
+                <ul className="navbar-nav mr-auto">
+                    <li className="nav-item dropdown p-1">
+                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tuoteryhmät 
+                        </a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                             {categories.map(tuoteryhma => (
                                 <li key={tuoteryhma.id}>
@@ -53,13 +56,17 @@ export default function Navbaruusi({url, cart, setCategory}) {
                             ))}
                         </ul>
                     </li>
-                </ul>
-                <ul className="navbar-nav-nav ml-auto">
-                    <li className="nav-item">
-                        <Cart cart={cart} />
+                    <li className="nav-item p-1">
+                        <a className="nav-link" href="tietoja">Tietoa kaupasta</a>
                     </li>
                 </ul>
             </div>
+            <ul className="navbar-nav ml-auto">
+                <li className="nav-link">
+                    <Cart cart={cart} />
+                    <productCart cart={cart} />
+                </li>
+            </ul>
         </nav>
     )
 }

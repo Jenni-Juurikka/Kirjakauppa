@@ -36,26 +36,30 @@ function App() {
   }
 
   return (
+  <div className="bg-color">
     <div className="container">
-      <div className="bg-color">
-        <Navbaruusi url={URL} setCategory={setCategory}/>
+    <div className="page-color">
         <Header/>
-        <div id="content" className="container-fluid">
+        <Navbaruusi url={URL} setCategory={setCategory}/>
+        
+        <div id="content" className="container-fluid p-2 p-sm-3 p-lg-4">
           <Switch>
             <Route path="/" render={() => <Home 
               url={URL}
               tuoteryhma={tuoteryhma}
-              /*search={searchPhrase} */
+              /*search={searchPhrase}*/ 
               addToCart={addToCart}/>}
               exact
             />
             <Route/>
           </Switch>
         </div>
-        <Cardit />
-      </div>
+        {/* <Cardit /> */}
+    
       <Footeri />
+      </div>
     </div>
+  </div>
   );
 }
 
