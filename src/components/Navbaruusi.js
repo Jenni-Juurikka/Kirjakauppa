@@ -2,6 +2,7 @@ import React from 'react';
 import {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Cart from './addToCart';
+import productCart from './productCart';
 
 //const url = 'http://localhost/kirjakauppa/'
 export default function Navbaruusi({url, cart, setCategory}) {
