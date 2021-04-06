@@ -37,27 +37,27 @@ function Tuotesivu() {
         <div className="row">
           {/* picture alku */}
           <div className="picture col-md-6 col-sm-12">
-            <img className="img-fluid mt-4 ml-md-2" src={kirja}/>
+            <img className="img-fluid mt-4 ml-md-2" src={tuote.image}/>
           </div>
           {/* picture stoppi */}
           {/* about_book_content */}
           <div className="about_book_content col-md-6">
             <div className="book_name col-md-12 col-sm-12  text-center">
-              <h3>Kirjan nimi tänne</h3>
-              <p>Kirjailijan nimi</p>
+              <h3>{tuote.name}</h3>
+              <p>{tuote.author}</p>
             </div>
             {/* funfacts alku */}
             <div className="funfacts col-md-12 text-center">
               Kovakantinen
               <div className="hinta text-center">
-                25.00€
+                {tuote.price}
               </div>
               <hr></hr>
               {/* add_to_cart alku */}
               <div className="add_to_cart row col-12">
                 {/* <input placeholder="1" min="1" name="tekstikenttä" type="number" className="form-control col-lg-4 col-md-3 col-sm-3" id="kpl_maara" /> */}
-                  <button type="button" className="btn btn-secondary ml-4 col-5">
-                    Lisää koriin
+                  <button type="button" className="btn btn-secondary ml-4 col-5" onClick={e => addToCart(tuote)}>
+                    Lisää ostoskoriin
                   </button>
               </div>
               {/* add_to_cart_stoppi */}
