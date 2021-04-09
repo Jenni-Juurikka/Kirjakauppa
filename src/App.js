@@ -22,7 +22,7 @@ function App() {
       setCategory(JSON.parse(localStorage.getItem('cart')));
     }
   }, [])
-
+  
   useEffect(() => {
     if (location.state!==undefined) {
       setCategory({id: location.state.id,name: location.state.name});
@@ -50,7 +50,6 @@ function App() {
             addToCart={addToCart}/>}
             exact
           />
-          <Route/>
         </Switch>
       </div>
       {/* <Cardit /> */}
