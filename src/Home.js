@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import './styles/colors.css';
 
 
@@ -38,8 +39,13 @@ export default function Home({url, tuoteryhma, search, addToCart}) {
                 {products.map(tuote => (
                     <div className="col-6 col-md-4 col-lg-3 col-xl-2" key={tuote.id}>
                         {/* <img {tuote.image} /> */}
-                        <p>{tuote.name}</p>
-                        <button className="btn btn-primary" type="button" onClick={e => addToCart(tuote)}>Lisää ostoskoriin</button>
+                        {/* <h5>{tuote.name}</h5> */}
+                        <Link to="/src/Tuotesivu.js" >{tuote.name}</Link>
+                        <p>{tuote.author}</p>
+                        <p>{tuote.price}</p>
+                        <button className="btn btn-primary" type="button" onClick={e => addToCart(tuote)}>
+                            Lisää ostoskoriin
+                        </button>
                     </div>
                 ))}
             </div>
