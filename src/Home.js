@@ -12,6 +12,10 @@ export default function Home({url, tuoteryhma,/* search,*/ addToCart}) {
         if (tuoteryhma !== null /*|| search !== ''*/) {
             let address = '';
 
+            // if (tuoteryhma === null) {
+            //     address = url + 'products/getallproducts.php';
+            // } else
+
             if (tuoteryhma !== null) {
                 address = url + 'products/getproducts.php/' + tuoteryhma?.id;
             } /*else if (search !== null) {
@@ -54,7 +58,7 @@ export default function Home({url, tuoteryhma,/* search,*/ addToCart}) {
                         <p>{tuote.author}</p>
                         <p>{tuote.price}</p>
                         <button className="btn btn-primary" type="button" onClick={e => addToCart(tuote)}>
-                            Lisää ostoskoriin
+                            {/* Lisää ostoskoriin */}
                         </button>
                     </div>
                 ))}
