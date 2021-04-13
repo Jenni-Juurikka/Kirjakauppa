@@ -46,7 +46,7 @@ export default function Home({url, tuoteryhma,/* search,*/ addToCart}) {
                     <div className="col-6 col-md-4 col-lg-3 col-xl-2" key={tuote.id}>
                         <img src={tuote.image} />
                         <h5>{tuote.name}</h5>
-                        {/* <Link to="/src/Tuotesivu.js" >{tuote.name}</Link> */}
+                        <Link href="/" onClick={e => Tuotesivu(url, tuote, addToCart) }> {tuote.name}</Link>
                         {/* <Route path="/" render={() => <Tuotesivu
                             url={URL}
                             tuoteid={tuote.id}
