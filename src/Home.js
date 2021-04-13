@@ -4,7 +4,9 @@ import './styles/colors.css';
 
 
 export default function Home({url, tuoteryhma, search, addToCart}) {
+    const URLI = "http://localhost/kirjakauppa/img/img_";
     const [products, setProducts] = useState([]);
+
 
     useEffect(async() => {
         if (tuoteryhma !== null /*|| search !== ''*/) {
@@ -38,9 +40,9 @@ export default function Home({url, tuoteryhma, search, addToCart}) {
             <div className="row">
                 {products.map(tuote => (
                     <div className="col-6 col-md-4 col-lg-3 col-xl-2" key={tuote.id}>
-                        {/* <img {tuote.image} /> */}
                         {/* <h5>{tuote.name}</h5> */}
                         <Link to="/src/Tuotesivu.js" >{tuote.name}</Link>
+                        <img src={URLI + tuote.id + ".png"} style={{width: 175}}/>
                         <p>{tuote.author}</p>
                         <p>{tuote.price}</p>
                         <button className="btn btn-primary" type="button" onClick={e => addToCart(tuote)}>
