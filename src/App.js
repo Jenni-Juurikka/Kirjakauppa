@@ -8,6 +8,7 @@ import Cardit from './components/Cardit';
 import Navbaruusi from './components/Navbaruusi';
 import Home from './Home';
 import Header from './components/header';
+import productCart from './components/productCart';
 
 
 const URL = "http://localhost/kirjakauppa/";
@@ -39,7 +40,7 @@ function App() {
   <div className="bg-color">
     <div className="container page-color">
       <Header/>
-      <Navbaruusi url={URL} setCategory={setCategory}/>
+      <Navbaruusi url={URL} cart={cart} setCategory={setCategory}/>
       {/*tuoteryhmän valinta */}
       <div id="content" className="container-fluid p-2 p-sm-3 p-lg-4">
         <Switch>
@@ -50,7 +51,13 @@ function App() {
             addToCart={addToCart}/>}
             exact
           />
-          <Route/>
+          {/* tämän pitäisi mennä ostoskoriin */}
+          <Route path="/src/components/productCart.js" render={() => <productCart 
+            url={URL} 
+            cart={cart}
+            />}
+            exact
+          />
         </Switch>
       </div>
       {/* <Cardit /> */}
