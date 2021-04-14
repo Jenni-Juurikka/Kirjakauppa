@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './styles/colors.css';
+import './styles/spacing.css';
 
 
 export default function Home({url, tuoteryhma, search, addToCart}) {
@@ -39,10 +40,12 @@ export default function Home({url, tuoteryhma, search, addToCart}) {
             <h3>{tuoteryhma?.name}</h3>
             <div className="row">
                 {products.map(tuote => (
-                    <div className="col-6 col-md-4 col-lg-3 col-xl-2" key={tuote.id}>
-                        {/* <h5>{tuote.name}</h5> */}
-                        <Link to="/src/Tuotesivu.js" >{tuote.name}</Link>
-                        <img src={URLI + tuote.id + ".png"} style={{width: 175}}/>
+                    <div className="col-6 col-md-4 col-xl-3" key={tuote.id}>
+                    {/* <h5>{tuote.name}</h5> */}
+                    <Link to="/src/Tuotesivu.js">{tuote.name}</Link>
+                    <div className="book_img img-fluid">
+                    <img src={URLI + tuote.id + ".png"} className="img-fluid"/>
+                    </div>
                         <p>{tuote.author}</p>
                         <p>{tuote.price}</p>
                         <button className="btn btn-primary" type="button" onClick={e => addToCart(tuote)}>

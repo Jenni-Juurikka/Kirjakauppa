@@ -59,7 +59,7 @@ function App() {
           />
         </Switch>
       </div>
-      {/* <Cardit /> */}
+      
     
       <Footeri />
     </div>
