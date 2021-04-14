@@ -1,11 +1,8 @@
-import kirja from "./img/lol.png";
 import "./styles/tuotesivu.css";
 import $ from 'jquery';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import Navbaruusi from './components/Navbaruusi';
-import Header from './components/header';
-import Footeri from './components/Footeri';
+import { useLocation, useEffect } from "react-router";
 
 
 const kirjatyyppi = [
@@ -15,24 +12,39 @@ const kirjatyyppi = [
 ];
 
 
-function Tuotesivu() {
+export default function Tuotesivu({tuote}) {
+
+  let location = useLocation();
+
+  useEffect(() => {
+    if (location.state!==undefined) {
+      setProduct({id: location.state.id,name: location.state.name});
+    }
+  }, [location.state])
+
+  const [tuote, setProduct] = useState([]);
+
+  useEffect(async() => {
+      if (tuote !== null ) {
+          let address = url + 'products/getproductdata.php/' + tuote?.id;
+
+          try {
+              const response = await fetch(address);
+              const json = await response.json();
+              if (response.ok) {
+                  setProducts(json);
+              } else {
+                  alert(json.error);
+              }
+          } catch (error) {
+              alert(error);
+          }
+      }
+      
+  }, [tuote])
+
   return (
     <div>
-      <Header />
-      <Navbaruusi url={URL} setCategory={setCategory}/>
-      {/*tuoteryhmän valinta */}
-      <div id="content" className="container-fluid p-2 p-sm-3 p-lg-4">
-        <Switch>
-          <Route path="/" render={() => <Home 
-            url={URL}
-            tuoteryhma={tuoteryhma}
-            /*search={searchPhrase}*/ 
-            addToCart={addToCart}/>}
-            exact
-          />
-          <Route/>
-        </Switch>
-      </div>
       <div className="tuotesivu_content col-md-12">
         <div className="row">
           {/* picture alku */}
@@ -103,9 +115,7 @@ function Tuotesivu() {
         </div> 
         {/* review stoppi */}
       </div>
-      <Footeri />
     </div> 
     // tuotesivu_content stoppi
   );
 }
-export default Tuotesivu;

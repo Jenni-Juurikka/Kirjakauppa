@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './header';
-import Navbaruusi from './Navbaruusi';
+import Navbar from './Navbar';
 import Footeri from './Footeri';
 import addToCart from '../App';
 import '../App.css';
@@ -9,7 +9,7 @@ export default function productCart(props) {
     return (
         <div className="container">
             <div className="bg-color">
-                <Navbaruusi/>
+                <Navbar/>
                 <Header/>
                 <div className="container-fluid">
                     <h3>Ostoskori</h3>

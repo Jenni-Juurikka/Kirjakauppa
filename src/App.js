@@ -4,11 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState, useEffect} from 'react';
 import {Switch, Route, useLocation} from 'react-router-dom';
 import Footeri from './components/Footeri';
-import Cardit from './components/Cardit';
-import Navbaruusi from './components/Navbaruusi';
+import Navbar from './components/Navbar';
 import Home from './Home';
 import Header from './components/header';
 import productCart from './components/productCart';
+import Order from './Order';
 
 
 const URL = "http://localhost/kirjakauppa/";
@@ -30,17 +30,41 @@ function App() {
     }
   }, [location.state])
 
-  function addToCart(product) {
-    const newCart = [...cart,product];
-    setCart(newCart);
-    localStorage.setItem('cart',JSON.stringify(newCart));
+  function addToCart(tuote) {
+    if (cart.some(item => item.id === tuote.id)) {
+      const existingProduct = cart.filter(item => item.id === tuote.id); 
+      updateAmount(parseInt(existingProduct[0].amount) + 1, tuote);
+    } else {
+      const newCart = [...cart,tuote];
+      setCart(newCart);
+      localStorage.setItem('cart',JSON.stringify(newCart));
+    }
+  }
+
+  function removeFromCart(tuote) {
+    const itemsWithoutRemoved = cart.filter(item => item.id !== tuote.id);
+    setCart(itemsWithoutRemoved);
+    localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
+  }
+
+  function updateAmount(amount, tuote) {
+    tuote.amount = amount;
+    const index = cart.findIndex((item => item.id === tuote.id));
+    const modifiedCart = Object.assign([...cart], {[index]: tuote});
+    setCart(modifiedCart);
+    localStorage.setItem('cart',JSON.stringify(modifiedCart));
+  }
+
+  function emptyCart() {
+    setCart([]);
+    localStorage.removeItem('cart');
   }
 
   return (
   <div className="bg-color">
     <div className="container page-color">
       <Header/>
-      <Navbaruusi url={URL} cart={cart} setCategory={setCategory}/>
+      <Navbar url={URL} cart={cart} setCategory={setCategory}/>
       {/*tuoteryhmän valinta */}
       <div id="content" className="container-fluid p-2 p-sm-3 p-lg-4">
         <Switch>
@@ -51,17 +75,17 @@ function App() {
             addToCart={addToCart}/>}
             exact
           />
-          {/* tämän pitäisi mennä ostoskoriin */}
-          <Route path="/src/components/productCart.js" render={() => <productCart 
-            url={URL} 
-            cart={cart}
-            />}
-            exact
-          />
+          <Route path="/order" render={() =>
+            <Order
+              url={URL}
+              cart={cart}
+              empty={emptyCart}
+              removeFromCart={removeFromCart}
+              updateAmount={updateAmount}
+            />
+          }/>
         </Switch>
       </div>
-      {/* <Cardit /> */}
-    
       <Footeri />
     </div>
   </div>

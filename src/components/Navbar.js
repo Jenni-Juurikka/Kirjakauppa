@@ -1,11 +1,11 @@
 import React from 'react';
 import {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import Cart from './addToCart';
+import Cart from './Cart';
 import '../styles/colors.css';
 
 //const url = 'http://localhost/kirjakauppa/'
-export default function Navbaruusi({url, cart, setCategory}) {
+export default function Navbar({url, cart, setCategory}) {
 
     const [categories, setCategories] = useState([]);
 
@@ -64,7 +64,6 @@ export default function Navbaruusi({url, cart, setCategory}) {
             <ul className="navbar-nav ml-auto">
                 <li className="nav-link">
                     <Cart cart={cart} />
-                    <productCart cart={cart} />
                 </li>
             </ul>
         </nav>
