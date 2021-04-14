@@ -90,7 +90,7 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                             <td></td>
                             <td>{sum.toFixed(2)}</td>
                             <td></td>
-                            <td><a href="#" onClick={e => empty()}></a>Tyhjennä kori</td>
+                            <td><a href="#" onClick={e => empty()}>Tyhjennä kori</a></td>
                         </tr>
                     </tbody>
                     
