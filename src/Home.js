@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './styles/colors.css';
+import './styles/spacing.css';
 
 
 export default function Home({url, tuoteryhma, search, addToCart}) {
