@@ -1,4 +1,3 @@
-import kirja from "./img/lol.png";
 import "./styles/tuotesivu.css";
 import $ from 'jquery';
 import Dropdown from 'react-dropdown';

@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState, useEffect} from 'react';
 import {Switch, Route, useLocation} from 'react-router-dom';
 import Footeri from './components/Footeri';
-import Cardit from './components/Cardit';
 import Navbaruusi from './components/Navbaruusi';
 import Home from './Home';
 import Header from './components/header';
