@@ -9,31 +9,43 @@ import Home from './Home';
 import Header from './components/header';
 import productCart from './components/productCart';
 import Order from './Order';
+import Tuotesivu from './Tuotesivu';
+import Tietoja from './Tietoja';
 
 
 const URL = "http://localhost/kirjakauppa/";
+
 function App() {
   const [tuoteryhma, setCategory] = useState(null);
+  const [product, setProduct] = useState(null);
   const [cart, setCart] = useState([]);
 
   let location = useLocation();
 
+  // tarkista onko localstoragessa jotain
   useEffect(() => {
     if ('cart' in localStorage) {
       setCategory(JSON.parse(localStorage.getItem('cart')));
     }
   }, [])
 
+  // aseta tuoteryhmä
   useEffect(() => {
     if (location.state!==undefined) {
       setCategory({id: location.state.id,name: location.state.name});
     }
   }, [location.state])
 
+  // aseta tuote
+  //useEffect(() => {
+  //  setProduct()
+  //})
+
+  // lisää tuote ostoskoriin
   function addToCart(tuote) {
     if (cart.some(item => item.id === tuote.id)) {
       const existingProduct = cart.filter(item => item.id === tuote.id); 
-      updateAmount(parseInt(existingProduct[0].amount) + 1, tuote);
+      //updateAmount(parseInt(existingProduct[0].amount) + 1, tuote);
     } else {
       const newCart = [...cart,tuote];
       setCart(newCart);
@@ -41,20 +53,23 @@ function App() {
     }
   }
 
+  // poista tuote ostoskorista
   function removeFromCart(tuote) {
     const itemsWithoutRemoved = cart.filter(item => item.id !== tuote.id);
     setCart(itemsWithoutRemoved);
     localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
   }
 
-  function updateAmount(amount, tuote) {
-    tuote.amount = amount;
-    const index = cart.findIndex((item => item.id === tuote.id));
-    const modifiedCart = Object.assign([...cart], {[index]: tuote});
-    setCart(modifiedCart);
-    localStorage.setItem('cart',JSON.stringify(modifiedCart));
-  }
+  // lisää tuotteen määrää ostoskorissa
+  // function updateAmount(amount, tuote) {
+  //   tuote.amount = amount;
+  //   const index = cart.findIndex((item => item.id === tuote.id));
+  //   const modifiedCart = Object.assign([...cart], {[index]: tuote});
+  //   setCart(modifiedCart);
+  //   localStorage.setItem('cart',JSON.stringify(modifiedCart));
+  // }
 
+  // tyhjennä koko ostoskori
   function emptyCart() {
     setCart([]);
     localStorage.removeItem('cart');
@@ -72,7 +87,8 @@ function App() {
             url={URL}
             tuoteryhma={tuoteryhma}
             /*search={searchPhrase}*/ 
-            addToCart={addToCart}/>}
+            addToCart={addToCart}
+            />}
             exact
           />
           <Route path="/order" render={() =>
@@ -81,9 +97,20 @@ function App() {
               cart={cart}
               empty={emptyCart}
               removeFromCart={removeFromCart}
-              updateAmount={updateAmount}
-            />
-          }/>
+              // updateAmount={updateAmount}
+            />}
+          />
+          <Route path="/tuotesivu" render={() =>
+            <Tuotesivu 
+              url={URL}
+              tuote={product}
+              addToCart={addToCart}
+            />}
+          />
+          <Route path="/tietoja" render={() =>
+            <Tietoja 
+            />}
+          />
         </Switch>
       </div>
       <Footeri />

@@ -2,7 +2,8 @@ import "./styles/tuotesivu.css";
 import $ from 'jquery';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { useLocation, useEffect } from "react-router";
+import {useLocation} from 'react-router-dom';
+import {useEffect, useState} from 'react';
 
 
 const kirjatyyppi = [
@@ -11,19 +12,12 @@ const kirjatyyppi = [
   'E-Kirja'
 ];
 
+const URLI = "http://localhost/kirjakauppa/img/img_";
 
-export default function Tuotesivu({tuote}) {
+export default function Tuotesivu({url, tuote, addToCart}) {
 
-  let location = useLocation();
-
-  useEffect(() => {
-    if (location.state!==undefined) {
-      setProduct({id: location.state.id,name: location.state.name});
-    }
-  }, [location.state])
-
-  const [tuote, setProduct] = useState([]);
-
+  const [product, setProductdata] = useState([]);
+  // hae valitun tuotteen tiedot
   useEffect(async() => {
       if (tuote !== null ) {
           let address = url + 'products/getproductdata.php/' + tuote?.id;
@@ -32,7 +26,7 @@ export default function Tuotesivu({tuote}) {
               const response = await fetch(address);
               const json = await response.json();
               if (response.ok) {
-                  setProducts(json);
+                  setProductdata(json);
               } else {
                   alert(json.error);
               }
@@ -47,45 +41,46 @@ export default function Tuotesivu({tuote}) {
     <div>
       <div className="tuotesivu_content col-md-12">
         <div className="row">
-          {/* picture alku */}
-          <div className="picture col-md-6 col-sm-12">
-            <img className="img-fluid mt-4 ml-md-2" src={tuote.image}/>
-          </div>
-          {/* picture stoppi */}
-          {/* about_book_content */}
-          <div className="about_book_content col-md-6">
-            <div className="book_name col-md-12 col-sm-12  text-center">
-              <h3>{tuote.name}</h3>
-              <p>{tuote.author}</p>
+            {/* picture alku */}
+            <div className="picture col-md-6 col-sm-12" >
+              <img src={URLI + product.id + ".png"} style={{width: 300}}/>
             </div>
-            {/* funfacts alku */}
-            <div className="funfacts col-md-12 text-center">
-              Kovakantinen
-              <div className="hinta text-center">
-                {tuote.price}
+            {/* picture stoppi */}
+            {/* about_book_content */}
+            <div className="about_book_content col-md-6">
+              <div className="book_name col-md-12 col-sm-12  text-center">
+                <h3>{product.name}</h3>
+                <p>{product.author}</p>
               </div>
-              <hr></hr>
-              {/* add_to_cart alku */}
-              <div className="add_to_cart row col-12">
-                {/* <input placeholder="1" min="1" name="tekstikenttä" type="number" className="form-control col-lg-4 col-md-3 col-sm-3" id="kpl_maara" /> */}
-                  <button type="button" className="btn btn-secondary ml-4 col-5" onClick={e => addToCart(tuote)}>
-                    Lisää ostoskoriin
-                  </button>
-              </div>
-              {/* add_to_cart_stoppi */}
-              <div className="available m-3">
-                Saatavilla: 3 kpl
-              </div>
-              {/* booktype alku */}
-              <div className="booktype dropdown m-4 text-center">
-                <Dropdown options={kirjatyyppi}
-                  placeholder="Valitse kirjan tyyppi" />
-              </div>
-              {/* booktype stoppi */}
-            </div> 
-            {/* funfacts stoppi */}
-          </div>
-          {/* about_book_content stoppi */}
+              {/* funfacts alku */}
+              <div className="funfacts col-md-12 text-center">
+                Kovakantinen
+                <div className="hinta text-center">
+                  {product.price}
+                </div>
+                <hr></hr>
+                {/* add_to_cart alku */}
+                <div className="add_to_cart row col-12">
+                  {/* <input placeholder="1" min="1" name="tekstikenttä" type="number" className="form-control col-lg-4 col-md-3 col-sm-3" id="kpl_maara" /> */}
+                    <button type="button" className="btn btn-secondary ml-4 col-5" onClick={e => addToCart(product)}>
+                      Lisää ostoskoriin
+                    </button>
+                </div>
+                {/* add_to_cart_stoppi */}
+                <div className="available m-3">
+                  Saatavilla: 3 kpl
+                </div>
+                {/* booktype alku */}
+                <div className="booktype dropdown m-4 text-center">
+                  <Dropdown options={kirjatyyppi}
+                    placeholder="Valitse kirjan tyyppi" />
+                </div>
+                {/* booktype stoppi */}
+              </div> 
+              {/* funfacts stoppi */}
+            </div>
+            {/* about_book_content stoppi */}
+            
         </div>
         {/* rowi stoppi */}
         {/* tuotekuvaus alku */}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef, createRef } from 'react';
+import {Link} from 'react-router-dom';
 
 
 
@@ -13,11 +14,11 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
     const[inputs ,setInputs] = useState([]);
     const[inputIndex ,setInputIndex] = useState(-1);
 
-    useEffect(() => {
-        if (inputs.length > 0 && inputIndex > -1 && inputs[inputIndex.current] !== null) {
-        inputs[inputIndex].current.focus();
-        }
-    }, [cart])
+    // useEffect(() => {
+    //     if (inputs.length > 0 && inputIndex > -1 && inputs[inputIndex.current] !== null) {
+    //     inputs[inputIndex].current.focus();
+    //     }
+    // }, [cart])
 
     useEffect(() => {
         for (let i = 0; i<cart.length; i++) {
@@ -56,10 +57,11 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
         )
     }
 
-    function changeAmount(e, tuote, id) {
-        updateAmount(e.target.value, tuote);
-        setInputIndex(id);
-    }
+    // vaihda kplmäärää
+    // function changeAmount(e, tuote, id) {
+    //     updateAmount(e.target.value, tuote);
+    //     setInputIndex(id);
+    // }
 
     let sum = 0;
 
@@ -74,14 +76,14 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                             sum+=parseFloat(tuote.price);
                             return (
                                 <tr >
-                                    <td>{tuote.name}</td>
-                                    <td>{tuote.price}</td>
-                                    <td><input
+                                    <td><Link id="tuote" to="/tuotesivu" >{tuote.name}</Link></td>
+                                    <td>{tuote.price} €</td>
+                                    {/* <td><input
                                         ref={inputs[id]}
                                         type="number" step="1" min="1"
                                         onChange={e => changeAmount(e, tuote, id)}
                                         value={tuote.amount}
-                                        /></td>
+                                        /></td> */}
                                     <td><a href="#" onClick={() => removeFromCart(tuote)}>Poista</a></td>
                                 </tr>
                             )
@@ -97,26 +99,29 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                 </table>
                 
                 <p>Tuotteita yhteensä {cart.length}.</p> 
-    
-    
-                {/* tilauslomake */}
-                <h4>Tee tilaus</h4>
-                <div>
-                    <form>
-                        <label>Nimi</label>
-                        <input type="text" id="asnimi"/>
-                        <label>Puhelinnumero</label>
-                        <input type="text" id="puhelinro"/>
-                        <label>Osoite</label>
-                        <input type="text" id="osoite"/>
-                        <label>Postitoimipaikka</label>
-                        <input type="text" id="postitmp"/>
-                        <label>Postinumero</label>
-                        <input type="text" id="postinro"/>
-                        <label>Maa</label>
-                        <input type="text" id="maa"/>
-                    </form>
-                </div>
+                
+                {cart.length > 0 && // Lähettää lomakkeen jos ostoskorissa on tavaraa 
+                <> 
+                    {/* tilauslomake */}
+                    <h4>Asiakastiedot</h4>
+                    <div>
+                        {/* <form onSubmit={order}>
+                            <label>Nimi</label>
+                            <input value={asnimi} onChange={e => setAsnimi(e.target.value)}/>
+                            <label>Puhelinnumero</label>
+                            <input value={puhelinro} onChange={e = setPuhelinro(e.target.value)}/>
+                            <label>Osoite</label>
+                            <input value={osoite} onChange={e => setOsoite(e.target.value)}/>
+                            <label>Postitoimipaikka</label>
+                            <input value={postitmp} onChange={e => setPostitmp(e.target.value)}/>
+                            <label>Postinumero</label>
+                            <input value={postinro} onChange={e => setPostinro(e.target.value)}/>
+                            <label>Maa</label>
+                            <input value={maa} onChange={e => setMaa(e.target.value)}/>
+                            <button >Tee tilaus</button>
+                        </form> */}
+                    </div>
+                </>}
             </div>
         )
     }
