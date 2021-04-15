@@ -40,7 +40,7 @@ export default function Home({url, tuoteryhma, search, addToCart}) {
             <h3>{tuoteryhma?.name}</h3>
             <div className="row">
                 {products.map(tuote => (
-                    <div className="col-6 col-md-4 col-lg-3 col-xl-2" key={tuote.id}>
+                    <div className="col-6 col-md-4 col-xl-3" key={tuote.id}>
                         <Link 
                             id="tuote" 
                             to={{
@@ -51,8 +51,10 @@ export default function Home({url, tuoteryhma, search, addToCart}) {
                                 }
                             }
                             }>
-                            <h5>{tuote.name}</h5>
-                            <img src={URLI + tuote.id + ".png"} style={{width: 175}}/>
+                            <h6>{tuote.name}</h6>
+                            <div className="book_img img-fluid">
+                            <img src={URLI + tuote.id + ".png"} className="img-fluid"/>
+                            </div>
                             <p>{tuote.author}</p>
                             <p>{tuote.price}</p>
                         </Link>
