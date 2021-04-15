@@ -11,6 +11,7 @@ import productCart from './components/productCart';
 import Order from './Order';
 import Tuotesivu from './Tuotesivu';
 import Tietoja from './Tietoja';
+import Login from './Login';
 
 
 const URL = "http://localhost/kirjakauppa/";
@@ -19,6 +20,7 @@ function App() {
   const [tuoteryhma, setCategory] = useState(null);
   const [product, setProduct] = useState(null);
   const [cart, setCart] = useState([]);
+  const [user, setUser] = useState(null);
 
   let location = useLocation();
 
@@ -109,6 +111,10 @@ function App() {
           />
           <Route path="/tietoja" render={() =>
             <Tietoja 
+            />}
+          />
+          <Route path="/Login" render={() => 
+            <Login setUser={setUser}
             />}
           />
         </Switch>
