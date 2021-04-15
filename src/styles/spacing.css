@@ -14,11 +14,14 @@
 }
 .book_img{
     width: 14em;
-
+    position: relative;
+    top: 12%;
 }
-/* .book{ position:fixed;
-
+.book{
+    position: absolute;
+    margin-top: 10px;
 }
-.perkele{
-   position: relative;
-} */
+.book_author {
+    margin-top: 38%;
+    line-height: 0.1;
+}
