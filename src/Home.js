@@ -8,7 +8,7 @@ export default function Home({url, tuoteryhma, search, addToCart}) {
     const URLI = "http://localhost/kirjakauppa/img/img_";
     const [products, setProducts] = useState([]);
 
-
+    // hae valitun tuoteryhmän tuotteet
     useEffect(async() => {
         if (tuoteryhma !== null /*|| search !== ''*/) {
             let address = '';
@@ -41,16 +41,7 @@ export default function Home({url, tuoteryhma, search, addToCart}) {
             <div className="row">
                 {products.map(tuote => (
                     <div className="col-6 col-md-4 col-lg-3 col-xl-2" key={tuote.id}>
-                        <Link 
-                            id="tuote" 
-                            to={{
-                                pathname: '/tuotesivu',
-                                state: {
-                                    id: tuote.id,
-                                    name: tuote.name
-                                }
-                            }
-                            }>
+                        <Link id="tuote" to="/tuotesivu">
                             <h5>{tuote.name}</h5>
                             <img src={URLI + tuote.id + ".png"} style={{width: 175}}/>
                             <p>{tuote.author}</p>

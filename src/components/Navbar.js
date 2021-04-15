@@ -30,7 +30,7 @@ export default function Navbar({url, cart, setCategory}) {
                 aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
-            <a className="navbar-brand mr-auto p-2" href="#">Kirjakauppa</a>
+            <a className="navbar-brand mr-auto p-2" href="/">Kirjakauppa</a>
             <div className="collapse navbar-collapse" id="navbar">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item dropdown p-1">
