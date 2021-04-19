@@ -42,7 +42,7 @@ export default function Home({url, tuoteryhma, search, addToCart, user}) {
             <div className="row">
                 {products.map(tuote => (
                     <div className="col-6 col-md-4 col-lg-3" key={tuote.id}>
-                        <Link id="tuote" to="/tuotesivu">
+                        <Link to='/tuotesivu'>
                             <div className="book">
                         <h6>{tuote.name}</h6></div>
                             <div className="book_img img-fluid">
@@ -61,3 +61,5 @@ export default function Home({url, tuoteryhma, search, addToCart, user}) {
     )
 
 }
+
+//to={{pathname: '/tuotesivu/', state: {id: tuote.id, name: tuote.name}}}

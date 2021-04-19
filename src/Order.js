@@ -29,7 +29,8 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
     // tilauslomakkeen lähetys backendiin
     function order(e) {
         e.preventDefault();
-        fetch(url + 'order/add.php', { // cors policy herjaa
+        let status = 0;
+        fetch(url + 'order/add.php', { // POST 500 internal server error, ei mene backkiin
             method: 'POST',
             header: {
                 'Accept': 'application/json',
@@ -42,15 +43,20 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                 postitmp: postitmp,
                 postinro: postinro,
                 maa: maa,
+                cart: cart,
             })
         })
         .then (res => {
-            return res.json();
+            status = parseInt(res.status);
+            
         })
         .then (
             (res) => { // tämä hämää, miksi eri värinen res?
-                empty();
-                setFinished(true);
+                if (status === 200) {
+                    empty();
+                    setFinished(true);
+                    return (<div><p>Tilaus onnistui!</p></div>);
+                }
             }, (error) => {
                 alert(error);
             }
@@ -90,7 +96,7 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                         })}
                         <tr >
                             <td></td>
-                            <td>{sum.toFixed(2)}</td>
+                            <td>{sum.toFixed(2)} €</td>
                             <td></td>
                             <td><a href="#" onClick={e => empty()}>Tyhjennä kori</a></td>
                         </tr>

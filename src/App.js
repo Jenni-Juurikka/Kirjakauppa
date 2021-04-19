@@ -44,6 +44,7 @@ function App() {
   //useEffect(() => {
   //  setProduct()
   //})
+  //
 
   // lisää tuote ostoskoriin
   function addToCart(tuote) {
