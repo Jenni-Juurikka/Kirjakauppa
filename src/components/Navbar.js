@@ -63,6 +63,9 @@ export default function Navbar({url, cart, setCategory}) {
             </div>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-link">
+                    <Link id="login" to="/login">Kirjaudu</Link>
+                </li>
+                <li className="nav-link">
                     <Cart cart={cart} />
                 </li>
             </ul>
