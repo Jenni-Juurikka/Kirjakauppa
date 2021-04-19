@@ -12,6 +12,7 @@ import Order from './Order';
 import Tuotesivu from './Tuotesivu';
 import Tietoja from './Tietoja';
 import Login from './Login';
+import Logout from './Logout';
 
 
 const URL = "http://localhost/kirjakauppa/";
@@ -117,6 +118,14 @@ function App() {
             <Login setUser={setUser}
             />}
           />
+          <Route path="/" exact render={() => 
+            <Tietoja user={user} />
+          }
+          />
+          <Route path="/logout" render={() => 
+            <Logout setUser={setUser} />  
+          }
+        />
         </Switch>
       </div>
       <Footeri />
