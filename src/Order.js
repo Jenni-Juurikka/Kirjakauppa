@@ -29,7 +29,7 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
     // tilauslomakkeen lähetys backendiin
     function order(e) {
         e.preventDefault();
-        fetch(url + 'order/add.php', {
+        fetch(url + 'order/add.php', { // cors policy herjaa
             method: 'POST',
             header: {
                 'Accept': 'application/json',
@@ -48,7 +48,7 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
             return res.json();
         })
         .then (
-            (res) => {
+            (res) => { // tämä hämää, miksi eri värinen res?
                 empty();
                 setFinished(true);
             }, (error) => {
@@ -105,11 +105,11 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                     {/* tilauslomake */}
                     <h4>Asiakastiedot</h4>
                     <div>
-                        {/* <form onSubmit={order}>
+                        <form onSubmit={order}>
                             <label>Nimi</label>
                             <input value={asnimi} onChange={e => setAsnimi(e.target.value)}/>
                             <label>Puhelinnumero</label>
-                            <input value={puhelinro} onChange={e = setPuhelinro(e.target.value)}/>
+                            <input value={puhelinro} onChange={e => setPuhelinro(e.target.value)}/>
                             <label>Osoite</label>
                             <input value={osoite} onChange={e => setOsoite(e.target.value)}/>
                             <label>Postitoimipaikka</label>
@@ -119,7 +119,7 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                             <label>Maa</label>
                             <input value={maa} onChange={e => setMaa(e.target.value)}/>
                             <button >Tee tilaus</button>
-                        </form> */}
+                        </form>
                     </div>
                 </>}
             </div>
