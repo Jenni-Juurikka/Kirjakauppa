@@ -63,6 +63,11 @@ export default function Navbar({url, cart, setCategory}) {
             </div>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-link">
+                    <Link id="yp" to="/yllapito">Ylläpito</Link>
+                </li>
+            </ul>
+            <ul className="navbar-nav ml-auto">
+                <li className="nav-link">
                     <Link id="login" to="/login">Kirjaudu</Link>
                 </li>
             </ul>

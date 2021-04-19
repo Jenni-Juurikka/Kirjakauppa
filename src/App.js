@@ -12,6 +12,7 @@ import Order from './Order';
 import Tuotesivu from './Tuotesivu';
 import Tietoja from './Tietoja';
 import Login from './Login';
+import Yllapito from './Yllapito';
 
 
 const URL = "http://localhost/kirjakauppa/";
@@ -117,10 +118,10 @@ function App() {
             <Login setUser={setUser}
             />}
           />
-          {/* <Route path="/Yllapito" render={() => 
-            
+          <Route path="/yllapito" render={() => 
+            <Yllapito />
             }
-          /> */}
+          />
         </Switch>
       </div>
       <Footeri />
