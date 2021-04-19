@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, createRef } from 'react';
 import {Link} from 'react-router-dom';
-
+import uuid from 'react-uuid';
 
 
 export default function Order({url, cart, empty, removeFromCart, updateAmount}) {

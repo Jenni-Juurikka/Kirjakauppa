@@ -48,8 +48,9 @@ function App() {
   function addToCart(tuote) {
     if (cart.some(item => item.id === tuote.id)) {
       const existingProduct = cart.filter(item => item.id === tuote.id); 
-      //updateAmount(parseInt(existingProduct[0].amount) + 1, tuote);
+      updateAmount(parseInt(existingProduct[0].amount) + 1, tuote);
     } else {
+      tuote["amount"] = 1;
       const newCart = [...cart,tuote];
       setCart(newCart);
       localStorage.setItem('cart',JSON.stringify(newCart));
