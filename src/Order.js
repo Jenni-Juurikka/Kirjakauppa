@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, createRef } from 'react';
 import {Link} from 'react-router-dom';
+import './styles/asiakastiedot.css';
 
 
 
@@ -104,27 +105,33 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                 <> 
                     {/* tilauslomake */}
                     <h4>Asiakastiedot</h4>
-                    <div>
-                        <form onSubmit={order}>
-                            <label>Nimi</label>
-                            <input value={asnimi} onChange={e => setAsnimi(e.target.value)}/>
-                            <label>Puhelinnumero</label>
-                            <input value={puhelinro} onChange={e => setPuhelinro(e.target.value)}/>
-                            <label>Osoite</label>
-                            <input value={osoite} onChange={e => setOsoite(e.target.value)}/>
-                            <label>Postitoimipaikka</label>
-                            <input value={postitmp} onChange={e => setPostitmp(e.target.value)}/>
-                            <label>Postinumero</label>
-                            <input value={postinro} onChange={e => setPostinro(e.target.value)}/>
-                            <label>Maa</label>
-                            <input value={maa} onChange={e => setMaa(e.target.value)}/>
-                            <button >Tee tilaus</button>
-                        </form>
-                    </div>
+                      <form onSubmit={order}>
+                        <div>
+                            <div className="marginia">
+                                <input placeholder="Kokonimi"value={asnimi} onChange={e => setAsnimi(e.target.value)}/>
+                            </div>
+                            <div className="marginia">
+                                <input placeholder="Puhelinumero" value={puhelinro} onChange={e => setPuhelinro(e.target.value)}/>
+                            </div>
+                            <div className="marginia"> 
+                                <input placeholder="Kotiosoite" value={osoite} onChange={e => setOsoite(e.target.value)}/>
+                            </div>
+                            <div className="marginia">
+                                <input placeholder="Postinumero" value={postinro} onChange={e => setPostinro(e.target.value)}/>
+                            </div>
+                            <div className="marginia">
+                                <input placeholder="Postitoimipaikka" value={postitmp} onChange={e => setPostitmp(e.target.value)}/>
+                            </div>
+                            <div className="marginia">
+                                <input placeholder="Maa" value={maa} onChange={e => setMaa(e.target.value)}/>
+                            </div>
+                            <div className="marginia">
+                                <button className="tilausnappi">Tee tilaus</button>
+                            </div>
+                        </div>
+                    </form>
                 </>}
             </div>
-        )
+          )
+        }
     }
-
-    
-}
