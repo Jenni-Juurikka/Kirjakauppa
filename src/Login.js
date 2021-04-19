@@ -1,10 +1,13 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 
 const URL = 'http://localhost/kirjakauppa/login.php';
 
 export default function Login() {
  const [username, setUsername] = useState(null);
  const [password, setPassword] = useState(null);
+
+ let history = useHistory();
 
  async function login(e) {
     e.preventDefault();
@@ -26,6 +29,7 @@ export default function Login() {
 
     if (response.ok) {
       alert('Kirjautuminen onnistui!');
+      history.push('/home');
     } else {
       if (response.status === 401) {
         alert('Virhe kirjautumisessa.');

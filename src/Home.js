@@ -1,10 +1,10 @@
 import React,{useState,useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import './styles/colors.css';
 import './styles/spacing.css';
 
 
-export default function Home({url, tuoteryhma, search, addToCart}) {
+export default function Home({url, tuoteryhma, search, addToCart, user}) {
     const URLI = "http://localhost/kirjakauppa/img/img_";
     const [products, setProducts] = useState([]);
 
@@ -34,6 +34,7 @@ export default function Home({url, tuoteryhma, search, addToCart}) {
         }
         
     }, [tuoteryhma,search])
+
 
     return (
         <div>
