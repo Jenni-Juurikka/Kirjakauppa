@@ -32,6 +32,30 @@ export default function Yllapito() {
         )
     }
 
+    function deleteTuoteryhma(e) {
+        tr.preventDefault();
+        fetch(YP_URL + 'savetuoteryhma.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: trname
+            })
+        })
+        .then(res => {
+            return res.json();
+        })
+        .then(
+            (res) => {
+                
+            }, (error) => {
+                alert(error);
+            }
+        )
+    }
+
     return (
         <div>
             <h4>Tuoteryhmät</h4>

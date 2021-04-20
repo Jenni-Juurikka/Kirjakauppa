@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, createRef } from 'react';
 import {Link} from 'react-router-dom';
+import uuid from 'react-uuid';
 import './styles/asiakastiedot.css';
 
 
@@ -30,7 +31,6 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
     // tilauslomakkeen lähetys backendiin
     function order(e) {
         e.preventDefault();
-        let status = 0;
         fetch(url + 'order/add.php', { // POST 500 internal server error, ei mene backkiin
             method: 'POST',
             header: {
@@ -48,16 +48,14 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
             })
         })
         .then (res => {
-            status = parseInt(res.status);
-            
+            //status = parseInt(res.status);
+            return res.json();
         })
         .then (
             (res) => { // tämä hämää, miksi eri värinen res?
-                if (status === 200) {
-                    empty();
-                    setFinished(true);
-                    return (<div><p>Tilaus onnistui!</p></div>);
-                }
+                console.log(res);
+                empty();
+                setFinished(true);
             }, (error) => {
                 alert(error);
             }
@@ -79,10 +77,10 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                 {/* korin sisältö */}
                 <table className="table" >
                     <tbody>
-                        {cart.map((tuote, id) => {
+                        {cart.map(tuote => {
                             sum+=parseFloat(tuote.price);
                             return (
-                                <tr >
+                                <tr key={uuid()}>
                                     <td><Link id="tuote" to="/tuotesivu" >{tuote.name}</Link></td>
                                     <td>{tuote.price} €</td>
                                     {/* <td><input
@@ -95,7 +93,7 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                                 </tr>
                             )
                         })}
-                        <tr >
+                        <tr key={uuid()}>
                             <td></td>
                             <td>{sum.toFixed(2)} €</td>
                             <td></td>
@@ -138,6 +136,9 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                     </form>
                 </>}
             </div>
-          )
-        }
+        )
+    } else {
+        return (<h3>Tilaus onnistui!</h3>);
     }
+
+}
