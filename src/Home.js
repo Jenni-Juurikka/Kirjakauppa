@@ -44,7 +44,7 @@ export default function Home({url, tuoteryhma, search, addToCart, user}) {
                     <div className="col-6 col-md-4 col-lg-3" key={tuote.id}>
                         <Link to='/tuotesivu'>
                             <div className="book">
-                        <h6>{tuote.name}</h6></div>
+                                <h6>{tuote.name}</h6></div>
                             <div className="book_img img-fluid">
                                 <img src={URLI + tuote.id + ".png"} className="img-fluid"/>
                             </div>
