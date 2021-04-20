@@ -1,0 +1,22 @@
+.asiakastiedot {
+    color:black;
+}
+
+input {
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.marginia {
+    margin: 5px;
+    
+}
+
+.tilausnappi {
+    padding: 10px;
+    padding-left: 63px;
+    padding-right: 63px;
+    border-radius: 8px;
+    background-color: orange;
+    margin-top: 20px;
+}

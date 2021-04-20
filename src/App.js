@@ -12,6 +12,7 @@ import Order from './Order';
 import Tuotesivu from './Tuotesivu';
 import Tietoja from './Tietoja';
 import Login from './Login';
+import Yllapito from './Yllapito';
 import Logout from './Logout';
 
 
@@ -43,6 +44,7 @@ function App() {
   //useEffect(() => {
   //  setProduct()
   //})
+  //
 
   // lisää tuote ostoskoriin
   function addToCart(tuote) {
@@ -118,6 +120,10 @@ function App() {
           <Route path="/Login" render={() => 
             <Login setUser={setUser}
             />}
+          />
+          <Route path="/yllapito" render={() => 
+            <Yllapito />
+            }
           />
           <Route path="/" exact render={() => 
             <Tietoja user={user} />
