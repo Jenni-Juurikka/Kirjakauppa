@@ -89,6 +89,36 @@ export default function Yllapito() {
         )
     }
 
+    function updateTuoteryhma(id) {
+        let status = 0;
+        fetch(YP_URL + 'saveupdatetr.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id: id,
+                name: trname
+            })
+        })
+        .then(res => {
+            status = parseInt(res.status);
+            return res.json();
+        })
+        .then(
+            (res) => {
+                if (status === 200) {
+                    setTuoteryhmat(res);
+                  } else {
+                    alert(res.error);
+                  }
+            }, (error) => {
+                alert(error);
+            }
+        )
+    }
+
     return (
         <div>
             <h4>Tuoteryhmät</h4>
@@ -109,6 +139,7 @@ export default function Yllapito() {
                                 <td>{tuoteryhma.id}</td>
                                 <td>{tuoteryhma.name}</td>
                                 <td><a className="delete" onClick={() => deleteTuoteryhma(tuoteryhma.id)} href="#">Poista</a></td>
+                                <td><a className="update" onClick={() => updateTuoteryhma(tuoteryhma.id)} href="#">Muokkaa</a></td>
                             </tr>
                         </table>
                     ))}

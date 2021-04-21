@@ -58,7 +58,7 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
             return res.json();
         })
         .then (
-            (res) => { 
+            (res) => {
                 console.log(res);
                 empty();
                 setFinished(true);
@@ -67,8 +67,6 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
             }
         )
     }
-
-    
 
     let sum = 0;
 
@@ -79,7 +77,7 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                 {/* korin sisältö */}
                 <table className="table" >
                     <tbody>
-                        {cart.map(tuote, id => {
+                        {cart.map((tuote, id) => {
                             sum+=parseFloat(tuote.price);
                             return (
                                 <tr key={uuid()}>

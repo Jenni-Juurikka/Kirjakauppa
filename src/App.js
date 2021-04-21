@@ -28,7 +28,7 @@ function App() {
   // tarkista onko localstoragessa jotain
   useEffect(() => {
     if ('cart' in localStorage) {
-      setCategory(JSON.parse(localStorage.getItem('cart')));
+      setCart(JSON.parse(localStorage.getItem('cart')));
     }
   }, [])
 
