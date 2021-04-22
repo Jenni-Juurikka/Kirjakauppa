@@ -16,23 +16,6 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
     const[inputs ,setInputs] = useState([]);
     const[inputIndex ,setInputIndex] = useState(-1);
 
-    useEffect(() => {
-        if (inputs.length > 0 && inputIndex > -1 && inputs[inputIndex.current] !== null) {
-        inputs[inputIndex].current.focus();
-        }
-    }, [cart])
-
-    useEffect(() => {
-        for (let i = 0; i<cart.length; i++) {
-            inputs[i] = createRef();
-        }
-    }, [cart.length])
-
-    // vaihda kplmäärää
-    function changeAmount(e, tuote, id) {
-        updateAmount(e.target.value, tuote);
-        setInputIndex(id);
-    }
 
     // tilauslomakkeen lähetys backendiin
     function order(e) {
@@ -83,12 +66,6 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                                 <tr key={uuid()}>
                                     <td><Link id="tuote" to="/tuotesivu" >{tuote.name}</Link></td>
                                     <td>{tuote.price} €</td>
-                                    <td><input
-                                        ref={inputs[id]}
-                                        type="number" step="1" min="1"
-                                        onChange={e => changeAmount(e, tuote, id)}
-                                        value={tuote.amount}
-                                        /></td>
                                     <td><a href="#" onClick={() => removeFromCart(tuote)}>Poista</a></td>
                                 </tr>
                             )
