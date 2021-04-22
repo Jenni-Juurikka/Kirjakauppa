@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom';
 const URL = 'http://localhost/kirjakauppa/login.php';
 
 export default function Login() {
- const [username, setUsername] = useState(null);
- const [password, setPassword] = useState(null);
+ const [username, setUsername] = useState('jmankisenmaa');
+ const [password, setPassword] = useState('auto123');
 
  let history = useHistory();
 
@@ -29,7 +29,7 @@ export default function Login() {
 
     if (response.ok) {
       alert('Kirjautuminen onnistui!');
-      history.push('/home');
+      history.push('/');
     } else {
       if (response.status === 401) {
         alert('Virhe kirjautumisessa.');

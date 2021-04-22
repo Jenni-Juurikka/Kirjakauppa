@@ -13,6 +13,8 @@ import Tietoja from './Tietoja';
 import Login from './Login';
 import Yllapito from './Yllapito';
 import Logout from './Logout';
+import Testi from './Testi';
+import Register from './Register';
 
 
 const URL = "http://localhost/kirjakauppa/";
@@ -116,20 +118,26 @@ function App() {
             <Tietoja 
             />}
           />
+          <Route path="/testi" component={Testi} /> 
           <Route path="/Login" render={() => 
             <Login setUser={setUser}
-            />}
+            />
+          }
           />
           <Route path="/yllapito" render={() => 
             <Yllapito />
             }
           />
           <Route path="/" exact render={() => 
-            <Tietoja user={user} />
+            <Home user={user} />
           }
           />
           <Route path="/logout" render={() => 
             <Logout setUser={setUser} />  
+          }
+        />
+        <Route path="/register" render={() => 
+          <Register setUser={setUser} />  
           }
         />
         </Switch>
