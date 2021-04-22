@@ -49,15 +49,10 @@ function App() {
 
   // lisää tuote ostoskoriin
   function addToCart(tuote) {
-    if (cart.some(item => item.id === tuote.id)) {
-      const existingProduct = cart.filter(item => item.id === tuote.id); 
-      updateAmount(parseInt(existingProduct[0].amount) + 1, tuote);
-    } else {
-      tuote["amount"] = 1;
       const newCart = [...cart,tuote];
       setCart(newCart);
       localStorage.setItem('cart',JSON.stringify(newCart));
-    }
+    
   }
 
   // poista tuote ostoskorista
@@ -65,15 +60,6 @@ function App() {
     const itemsWithoutRemoved = cart.filter(item => item.id !== tuote.id);
     setCart(itemsWithoutRemoved);
     localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
-  }
-
-  // lisää tuotteen määrää ostoskorissa
-  function updateAmount(amount, tuote) {
-    tuote.amount = amount;
-    const index = cart.findIndex((item => item.id === tuote.id));
-    const modifiedCart = Object.assign([...cart], {[index]: tuote});
-    setCart(modifiedCart);
-    localStorage.setItem('cart',JSON.stringify(modifiedCart));
   }
 
   // tyhjennä koko ostoskori
@@ -104,7 +90,6 @@ function App() {
               cart={cart}
               empty={emptyCart}
               removeFromCart={removeFromCart}
-              updateAmount={updateAmount}
             />}
           />
           <Route path="/tuotesivu" render={() =>
