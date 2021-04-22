@@ -68,6 +68,11 @@ export default function Navbar({url, cart, setCategory}) {
             </ul>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-link">
+                    <Link id="register" to="/register">Luo käyttäjä</Link>
+                </li>
+            </ul>
+            <ul className="navbar-nav ml-auto">
+                <li className="nav-link">
                     <Link id="login" to="/login">Kirjaudu</Link>
                 </li>
             </ul>
