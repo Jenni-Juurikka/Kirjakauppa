@@ -9,6 +9,7 @@ const url2 = 'http://localhost/kirjakauppa/'
 export default function Login() {
  const [username, setUsername] = useState('jmankisenmaa');
  const [password, setPassword] = useState('auto123');
+ const [astunnus, setAstunnus] = useState('')
  const [asnimi, setAsnimi] = useState('');
  const [salasana, setSalasana] = useState('');
  const [puhelinro, setPuhelinro] = useState('');
@@ -25,7 +26,7 @@ export default function Login() {
     e.preventDefault();
     const formData = new FormData();
 
-    formData.append('astunnus',username);
+    formData.append('username',username);
     formData.append('salasana',password);
 
     const config = {
@@ -58,6 +59,7 @@ export default function Login() {
           'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+          username: astunnus,
           asnimi: asnimi,
           salasana: salasana,
           puhelinro: puhelinro,
@@ -100,7 +102,7 @@ export default function Login() {
               <div>
                   <label>Salasana: </label>
                   <input value={password} type="password" className="form-control col-12" aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default" placeholder="käyttäjä"
+                    aria-describedby="inputGroup-sizing-default" placeholder="salasana"
                     onChange={e => setPassword(e.target.value)}/>
               </div>
               <div>
@@ -108,9 +110,16 @@ export default function Login() {
               </div>
             </div>
           </form>
+
+
           <form onSubmit={registeri}>
             <div className="col-sm-6">
                 <h3>Luo asiakastili</h3>
+                <div className="marginia">
+                    <input type="text" className="form-control col-12" aria-label="Default"
+                    aria-describedby="inputGroup-sizing-default" placeholder="Käyttäjätunnus"
+                    onChange={e => setAstunnus(e.target.value)}/>
+                </div>
                 <div className="marginia">
                     <input type="text" className="form-control col-12" aria-label="Default"
                     aria-describedby="inputGroup-sizing-default" placeholder="Koko nimi"

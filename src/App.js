@@ -14,8 +14,6 @@ import Login from './Login';
 import Yllapito from './Yllapito';
 import Logout from './Logout';
 import Testi from './Testi';
-import Register from './Register';
-
 
 const URL = "http://localhost/kirjakauppa/";
 
@@ -119,10 +117,6 @@ function App() {
           />
           <Route path="/logout" render={() => 
             <Logout setUser={setUser} />  
-          }
-        />
-        <Route path="/register" render={() => 
-          <Register setUser={setUser} />  
           }
         />
         </Switch>
