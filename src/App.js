@@ -126,7 +126,9 @@ function App() {
         />
         </Switch>
       </div>
-      <Footeri />
+      <Footeri 
+        url={URL}
+      />
     </div>
   </div>
   );

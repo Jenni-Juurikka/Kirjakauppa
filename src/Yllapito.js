@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom'; 
 
-export default function Yllapito(url) {
+export default function Yllapito({url}) {
 
     const [tuoteryhmat, setTuoteryhmat] = useState([]);
     const [trname, setTrname] = useState('');
