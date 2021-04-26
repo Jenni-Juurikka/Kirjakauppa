@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, createRef } from 'react';
+import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import uuid from 'react-uuid';
 import './styles/asiakastiedot.css';
@@ -13,8 +13,6 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
     const[postinro ,setPostinro] = useState('');
     const[maa ,setMaa] = useState('');
     const[finished ,setFinished] = useState(false);
-    const[inputs ,setInputs] = useState([]);
-    const[inputIndex ,setInputIndex] = useState(-1);
 
 
     // tilauslomakkeen lähetys backendiin
