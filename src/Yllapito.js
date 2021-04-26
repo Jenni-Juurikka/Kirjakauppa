@@ -220,12 +220,11 @@ export default function Yllapito() {
             <h4>Tuoteryhmät</h4>
             <div>
                 <form onSubmit={addTuoteryhma}>
-                    <div>
-                        <label>Tuoteryhmän nimi</label>
-                        <input value={trname} onChange={tr => setTrname(tr.target.value)}/>
+                    <div className="marginia">
+                        <input placeholder="Tuoteryhmän nimi" value={trname} onChange={tr => setTrname(tr.target.value)}/>
                     </div>
                     <div>
-                        <button>Lisää uusi tuoteryhmä</button>
+                        <button className="tilausnappi">Lisää uusi tuoteryhmä</button>
                     </div>
                 </form>
             </div>
@@ -246,28 +245,23 @@ export default function Yllapito() {
             <h4>Tuotteet</h4>
             <div>
                 <form onSubmit={addTuote}>
-                    <div>
-                        <label>Kirjan nimi</label>
-                        <input value={tname} onChange={t => setTname(t.target.value)}/>
+                    <div className="marginia">
+                        <input placeholder="Kirjan nimi" value={tname} onChange={t => setTname(t.target.value)}/>
+                    </div>
+                    <div className="marginia">
+                        <input placeholder="Kirjailija" value={author} onChange={t => setAuthor(t.target.value)}/>
+                    </div>
+                    <div className="marginia">
+                        <input placeholder="Hinta" value={price} onChange={t => setPrice(t.target.value)}/>
+                    </div>
+                    <div className="marginia">
+                        {/* <input placeholder="Kuva" value={tname} onChange={t => setImage(t.target.value)}/> */}
+                    </div>
+                    <div className="marginia">
+                        <input placeholder="Kategoria" value={category_id} onChange={t => setCategory_id(t.target.value)}/>
                     </div>
                     <div>
-                        <label>Kirjailija</label>
-                        <input value={author} onChange={t => setAuthor(t.target.value)}/>
-                    </div>
-                    <div>
-                        <label>Hinta</label>
-                        <input value={price} onChange={t => setPrice(t.target.value)}/>
-                    </div>
-                    <div>
-                        {/* <label>Kuva</label>
-                        <input value={tname} onChange={t => setImage(t.target.value)}/> */}
-                    </div>
-                    <div>
-                        <label>Kategoria</label>
-                        <input value={category_id} onChange={t => setCategory_id(t.target.value)}/>
-                    </div>
-                    <div>
-                        <button>Lisää uusi tuote</button>
+                        <button className="tilausnappi">Lisää uusi tuote</button>
                     </div>
                 </form>
             </div>

@@ -40,10 +40,10 @@ function App() {
   }, [location.state])
 
   // aseta tuote
-  //useEffect(() => {
-  //  setProduct()
-  //})
-  //
+  // useEffect(() => {
+  //   setProduct(product)
+  // })
+  
 
   // lisää tuote ostoskoriin
   function addToCart(tuote) {
