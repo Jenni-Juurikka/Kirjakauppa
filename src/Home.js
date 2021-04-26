@@ -4,7 +4,7 @@ import './styles/colors.css';
 import './styles/spacing.css';
 
 
-export default function Home({url, tuoteryhma, search, addToCart, user}) {
+export default function Home({url, tuoteryhma, search, addToCart, user, setProduct}) {
     const [products, setProducts] = useState([]);
 
     // hae kaikki tuotteet 
@@ -19,7 +19,7 @@ export default function Home({url, tuoteryhma, search, addToCart, user}) {
             if (tuoteryhma !== null) {
                 address = url + 'products/getproducts.php/' + tuoteryhma?.id;
             } /*else if (search !== null) {
-                address = url + 'products/search.php/' + search;
+                address = url + 'products/search.php/' + searchphrase;
             }*/ 
 
             try {
@@ -27,6 +27,7 @@ export default function Home({url, tuoteryhma, search, addToCart, user}) {
                 const json = await response.json();
                 if (response.ok) {
                     setProducts(json);
+                    setProduct(json[0]);
                 } else {
                     alert(json.error);
                 }

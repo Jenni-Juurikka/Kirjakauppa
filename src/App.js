@@ -39,10 +39,12 @@ function App() {
     }
   }, [location.state])
 
-  // aseta tuote
-  // useEffect(() => {
-  //   setProduct(product)
-  // })
+  // aseta tuote TÄMÄ ON VIRHEELLINEN
+  useEffect(() => {
+    if (location.state!==undefined) {
+      setProduct({id: location.state.id});
+    }
+  }, [location.state])
   
 
   // lisää tuote ostoskoriin
@@ -83,6 +85,7 @@ function App() {
             tuoteryhma={tuoteryhma}
             /*search={searchPhrase}*/ 
             addToCart={addToCart}
+            setProduct={setProduct}
             />}
             exact
           />

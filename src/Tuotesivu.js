@@ -12,7 +12,6 @@ const kirjatyyppi = [
   'E-Kirja'
 ];
 
-const URLI = "http://localhost/kirjakauppa/img/img_";
 
 export default function Tuotesivu({url, tuote, addToCart}) {
 
@@ -43,7 +42,7 @@ export default function Tuotesivu({url, tuote, addToCart}) {
         <div className="row">
             {/* picture alku */}
             <div className="picture col-md-6 col-sm-12" >
-              <img src={URLI + product.id + ".png"} style={{width: 300}}/>
+              <img src={url + 'img/img_' + tuote.id + '.png'} style={{width: 300}}/>
             </div>
             {/* picture stoppi */}
             {/* about_book_content */}
@@ -62,7 +61,7 @@ export default function Tuotesivu({url, tuote, addToCart}) {
                 {/* add_to_cart alku */}
                 <div className="add_to_cart row col-12">
                   {/* <input placeholder="1" min="1" name="tekstikenttä" type="number" className="form-control col-lg-4 col-md-3 col-sm-3" id="kpl_maara" /> */}
-                    <button type="button" className="btn btn-secondary ml-4 col-5" onClick={e => addToCart(product)}>
+                    <button type="button" className="btn btn-secondary ml-4 col-5" onClick={e => addToCart(tuote)}>
                       Lisää ostoskoriin
                     </button>
                 </div>
