@@ -13,7 +13,7 @@ import Tietoja from './Tietoja';
 import Login from './Login';
 import Yllapito from './Yllapito';
 import Logout from './Logout';
-
+import Testi from './Testi';
 
 const URL = "http://localhost/kirjakauppa/";
 
@@ -28,7 +28,7 @@ function App() {
   // tarkista onko localstoragessa jotain
   useEffect(() => {
     if ('cart' in localStorage) {
-      setCategory(JSON.parse(localStorage.getItem('cart')));
+      setCart(JSON.parse(localStorage.getItem('cart')));
     }
   }, [])
 
@@ -40,22 +40,17 @@ function App() {
   }, [location.state])
 
   // aseta tuote
-  //useEffect(() => {
-  //  setProduct()
-  //})
-  //
+  // useEffect(() => {
+  //   setProduct(product)
+  // })
+  
 
   // lisää tuote ostoskoriin
   function addToCart(tuote) {
-    if (cart.some(item => item.id === tuote.id)) {
-      const existingProduct = cart.filter(item => item.id === tuote.id); 
-      updateAmount(parseInt(existingProduct[0].amount) + 1, tuote);
-    } else {
-      tuote["amount"] = 1;
       const newCart = [...cart,tuote];
       setCart(newCart);
       localStorage.setItem('cart',JSON.stringify(newCart));
-    }
+    
   }
 
   // poista tuote ostoskorista
@@ -64,15 +59,6 @@ function App() {
     setCart(itemsWithoutRemoved);
     localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
   }
-
-  // lisää tuotteen määrää ostoskorissa
-  // function updateAmount(amount, tuote) {
-  //   tuote.amount = amount;
-  //   const index = cart.findIndex((item => item.id === tuote.id));
-  //   const modifiedCart = Object.assign([...cart], {[index]: tuote});
-  //   setCart(modifiedCart);
-  //   localStorage.setItem('cart',JSON.stringify(modifiedCart));
-  // }
 
   // tyhjennä koko ostoskori
   function emptyCart() {
@@ -84,7 +70,11 @@ function App() {
   <div className="bg-color">
     <div className="container page-color">
       <Header/>
-      <Navbar url={URL} cart={cart} setCategory={setCategory}/>
+      <Navbar 
+        url={URL} 
+        cart={cart} 
+        setCategory={setCategory}
+      />
       {/*tuoteryhmän valinta */}
       <div id="content" className="container-fluid p-2 p-sm-3 p-lg-4">
         <Switch>
@@ -102,7 +92,6 @@ function App() {
               cart={cart}
               empty={emptyCart}
               removeFromCart={removeFromCart}
-              // updateAmount={updateAmount}
             />}
           />
           <Route path="/tuotesivu" render={() =>
@@ -116,16 +105,19 @@ function App() {
             <Tietoja 
             />}
           />
+          <Route path="/testi" component={Testi} /> 
           <Route path="/Login" render={() => 
             <Login setUser={setUser}
-            />}
+            />
+          }
           />
           <Route path="/yllapito" render={() => 
-            <Yllapito />
-            }
+            <Yllapito 
+            url={URL}
+            />}
           />
           <Route path="/" exact render={() => 
-            <Tietoja user={user} />
+            <Home user={user} />
           }
           />
           <Route path="/logout" render={() => 
@@ -134,7 +126,9 @@ function App() {
         />
         </Switch>
       </div>
-      <Footeri />
+      <Footeri 
+        url={URL}
+      />
     </div>
   </div>
   );

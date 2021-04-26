@@ -16,22 +16,11 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
     const[inputs ,setInputs] = useState([]);
     const[inputIndex ,setInputIndex] = useState(-1);
 
-    // useEffect(() => {
-    //     if (inputs.length > 0 && inputIndex > -1 && inputs[inputIndex.current] !== null) {
-    //     inputs[inputIndex].current.focus();
-    //     }
-    // }, [cart])
-
-    useEffect(() => {
-        for (let i = 0; i<cart.length; i++) {
-            inputs[i] = createRef();
-        }
-    }, [cart.length])
 
     // tilauslomakkeen lähetys backendiin
     function order(e) {
         e.preventDefault();
-        fetch(url + 'order/add.php', { // POST 500 internal server error, ei mene backkiin
+        fetch(url + 'order/add.php', { 
             method: 'POST',
             header: {
                 'Accept': 'application/json',
@@ -52,7 +41,7 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
             return res.json();
         })
         .then (
-            (res) => { // tämä hämää, miksi eri värinen res?
+            (res) => {
                 console.log(res);
                 empty();
                 setFinished(true);
@@ -61,12 +50,6 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
             }
         )
     }
-
-    // vaihda kplmäärää
-    // function changeAmount(e, tuote, id) {
-    //     updateAmount(e.target.value, tuote);
-    //     setInputIndex(id);
-    // }
 
     let sum = 0;
 
@@ -77,18 +60,12 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                 {/* korin sisältö */}
                 <table className="table" >
                     <tbody>
-                        {cart.map(tuote => {
+                        {cart.map((tuote, id) => {
                             sum+=parseFloat(tuote.price);
                             return (
                                 <tr key={uuid()}>
                                     <td><Link id="tuote" to="/tuotesivu" >{tuote.name}</Link></td>
                                     <td>{tuote.price} €</td>
-                                    {/* <td><input
-                                        ref={inputs[id]}
-                                        type="number" step="1" min="1"
-                                        onChange={e => changeAmount(e, tuote, id)}
-                                        value={tuote.amount}
-                                        /></td> */}
                                     <td><a href="#" onClick={() => removeFromCart(tuote)}>Poista</a></td>
                                 </tr>
                             )

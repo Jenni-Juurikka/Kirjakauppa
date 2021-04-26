@@ -12,6 +12,10 @@ input {
     
 }
 
+.marginia-left {
+    margin-left: 200px;
+}
+
 .tilausnappi {
     padding: 10px;
     padding-left: 63px;
@@ -20,3 +24,4 @@ input {
     background-color: orange;
     margin-top: 20px;
 }
+
