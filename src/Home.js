@@ -8,6 +8,10 @@ export default function Home({url, tuoteryhma, search, addToCart, user}) {
     const URLI = "http://localhost/kirjakauppa/img/img_";
     const [products, setProducts] = useState([]);
 
+    // hae kaikki tuotteet 
+    // if (tuoteryhma === null) {
+    //    let address = url + 'products/getallproducts.php/';
+
     // hae valitun tuoteryhmän tuotteet
     useEffect(async() => {
         if (tuoteryhma !== null /*|| search !== ''*/) {
@@ -17,8 +21,7 @@ export default function Home({url, tuoteryhma, search, addToCart, user}) {
                 address = url + 'products/getproducts.php/' + tuoteryhma?.id;
             } /*else if (search !== null) {
                 address = url + 'products/search.php/' + search;
-            }*/
-
+            }*/ 
 
             try {
                 const response = await fetch(address);
