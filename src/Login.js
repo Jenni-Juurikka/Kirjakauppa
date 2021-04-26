@@ -1,14 +1,10 @@
-import React, {useState, handleChange, Component, } from 'react';
+import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import './styles/asiakastiedot.css';
 
-const URL = 'http://localhost/kirjakauppa/login.php';
-// TEE NIMELLE JOTAIN JOSSAIN KOHTAAN EN NYT JAKSA //
-const url2 = 'http://localhost/kirjakauppa/'
-
-export default function Login() {
- const [username, setUsername] = useState('jmankisenmaa');
- const [password, setPassword] = useState('auto123');
+export default function Login({url}) {
+ const [username, setUsername] = useState('jman');
+ const [password, setPassword] = useState('auto');
  const [astunnus, setAstunnus] = useState('')
  const [asnimi, setAsnimi] = useState('');
  const [salasana, setSalasana] = useState('');
@@ -17,8 +13,6 @@ export default function Login() {
  const [postitmp, setPostitmp] = useState('');
  const [postinro, setPostinro] = useState('');
  const [maa, setMaa] = useState('');
- const [asvuosi, setAsvuosi] = useState('');
- const [setFinished] = useState(false);
 
  let history = useHistory();
 
@@ -37,7 +31,7 @@ export default function Login() {
         },
         body: formData
       }
-    const response = await fetch(URL,config);
+    const response = await fetch(url + 'login/login.php',config);
     const json = await response.json();
 
     if (response.ok) {
@@ -52,7 +46,7 @@ export default function Login() {
 
  function registeri(e) {
   e.preventDefault();
-  fetch(url2 + 'register/registerAdd.php', {
+  fetch(url + 'register/registerAdd.php', {
       method: 'POST',
       header: {
           'Accept': 'application/json',
@@ -66,8 +60,7 @@ export default function Login() {
           osoite: osoite,
           postitmp: postitmp,
           postinro: postinro,
-          maa: maa,
-          asvuosi: asvuosi,
+          maa: maa
         })
     })
     .then (res => {
@@ -76,17 +69,12 @@ export default function Login() {
     .then (
         (res) => {
             console.log(res);
-            setFinished(true);
         }, (error) => {
             alert(error);
         }
       )
     }
 
-    
-    function refresh() {
-      window.location.reload(false);
-    }
 
     return (
       <div className="container"> 
@@ -156,11 +144,10 @@ export default function Login() {
                     onChange={e => setMaa(e.target.value)}/>
                 </div>
                 <div className="marginia">
-                    <button onClick={refresh} className="tilausnappi">Luo Käyttäjätunnus</button>
+                    <button  className="tilausnappi">Luo Käyttäjätunnus</button>
                 </div>
             </div>
         </form>
       </div>
     );   
 }
-

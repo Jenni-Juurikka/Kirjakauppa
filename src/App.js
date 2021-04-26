@@ -111,6 +111,7 @@ function App() {
           <Route path="/testi" component={Testi} /> 
           <Route path="/Login" render={() => 
             <Login setUser={setUser}
+            url={URL}
             />
           }
           />
