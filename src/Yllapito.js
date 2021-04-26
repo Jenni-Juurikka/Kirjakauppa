@@ -275,7 +275,7 @@ export default function Yllapito({url}) {
                                 <td>{tuote.name}</td>
                                 <td>{tuote.author}</td>
                                 <td>{tuote.price}</td>
-                                <td>{tuote.image}</td>
+                                <td><img src={url + 'img/img_' + tuote.id + '.png'} className="img-fluid" width="40"/></td>
                                 <td>{tuote.category_id}</td>
                                 <td><a className="delete" onClick={() => deleteTuote(tuote.id)} href="#">Poista</a></td>
                                 {/* <td><a className="update" onClick={() => updateTuote(tuote.id)} href="#">Muokkaa</a></td> */}
