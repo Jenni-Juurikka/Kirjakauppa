@@ -7,7 +7,6 @@ import Footeri from './components/Footeri';
 import Navbar from './components/Navbar';
 import Home from './Home';
 import Header from './components/header';
-import productCart from './components/productCart';
 import Order from './Order';
 import Tuotesivu from './Tuotesivu';
 import Tietoja from './Tietoja';
