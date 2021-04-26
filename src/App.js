@@ -70,7 +70,11 @@ function App() {
   <div className="bg-color">
     <div className="container page-color">
       <Header/>
-      <Navbar url={URL} cart={cart} setCategory={setCategory}/>
+      <Navbar 
+        url={URL} 
+        cart={cart} 
+        setCategory={setCategory}
+      />
       {/*tuoteryhmän valinta */}
       <div id="content" className="container-fluid p-2 p-sm-3 p-lg-4">
         <Switch>
@@ -108,8 +112,9 @@ function App() {
           }
           />
           <Route path="/yllapito" render={() => 
-            <Yllapito />
-            }
+            <Yllapito 
+            url={URL}
+            />}
           />
           <Route path="/" exact render={() => 
             <Home user={user} />

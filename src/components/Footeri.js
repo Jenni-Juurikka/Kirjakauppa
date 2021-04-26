@@ -2,11 +2,11 @@ import React from 'react';
 import logo from '../images/logo.png';
 import {useState, useEffect} from 'react';
 
-export default function Footeri() {
+export default function Footeri(url) {
 const [hours, setHours] = useState([]);
 
 useEffect(() => {
-  fetch('http://localhost/kirjakauppa/footer/getopenhours.php')
+  fetch(url + '/footer/getopenhours.php')
   .then(response => response.json())
   .then(
     (response) => {

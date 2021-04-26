@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom'; 
 
-const YP_URL = 'http://localhost/kirjakauppa/yllapito/';
-export default function Yllapito() {
+export default function Yllapito(url) {
 
     const [tuoteryhmat, setTuoteryhmat] = useState([]);
     const [trname, setTrname] = useState('');
@@ -17,7 +16,7 @@ export default function Yllapito() {
     // tuoteryhmät
     useEffect(() => {
         let status = 0;
-        fetch(YP_URL + 'showtuoteryhmat.php')
+        fetch(url + 'yllapito/showtuoteryhmat.php')
         .then(res => {
             status = parseInt(res.status);
             return res.json()
@@ -38,7 +37,7 @@ export default function Yllapito() {
     function addTuoteryhma(tr) {
         tr.preventDefault();
         let status = 0;
-        fetch(YP_URL + 'savetuoteryhma.php', {
+        fetch(url + 'yllapito/savetuoteryhma.php', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -67,7 +66,7 @@ export default function Yllapito() {
 
     function deleteTuoteryhma(id) {
         let status = 0;
-        fetch(YP_URL + 'deletetuoteryhma.php', {
+        fetch(url + 'yllapito/deletetuoteryhma.php', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -96,39 +95,41 @@ export default function Yllapito() {
     }
 
     // function updateTuoteryhma(id) {
-    //     let status = 0;
-    //     fetch(YP_URL + 'saveupdatetr.php', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({
-    //             id: id,
-    //             name: trname
-    //         })
-    //     })
-    //     .then(res => {
-    //         status = parseInt(res.status);
-    //         return res.json();
-    //     })
-    //     .then(
-    //         (res) => {
-    //             if (status === 200) {
-    //                 setTuoteryhmat(res);
-    //               } else {
-    //                 alert(res.error);
-    //               }
-    //         }, (error) => {
-    //             alert(error);
-    //         }
-    //     )
+
+                //     let status = 0;
+
+                //     fetch(url + 'yllapito/saveupdatetr.php', {
+                //         method: 'POST',
+                //         headers: {
+                //             'Accept': 'application/json',
+                //             'Content-Type': 'application/json',
+                //         },
+                //         body: JSON.stringify({
+                //             id: id,
+                //             name: trname
+                //         })
+                //     })
+                //     .then(res => {
+                //         status = parseInt(res.status);
+                //         return res.json();
+                //     })
+                //     .then(
+                //         (res) => {
+                //             if (status === 200) {
+                //                 setTuoteryhmat(res);
+                //               } else {
+                //                 alert(res.error);
+                //               }
+                //         }, (error) => {
+                //             alert(error);
+                //         }
+                //     )
     // }
 
     // tuotteet
     useEffect(() => {
         let status = 0;
-        fetch(YP_URL + 'showtuotteet.php')
+        fetch(url + 'yllapito/showtuotteet.php')
         .then(res => {
             status = parseInt(res.status);
             return res.json()
@@ -149,7 +150,7 @@ export default function Yllapito() {
     function addTuote(t) {
         t.preventDefault();
         let status = 0;
-        fetch(YP_URL + 'savetuote.php', {
+        fetch(url + 'yllapito/savetuote.php', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -186,7 +187,7 @@ export default function Yllapito() {
 
     function deleteTuote(id) {
         let status = 0;
-        fetch(YP_URL + 'deletetuote.php', {
+        fetch(url + 'yllapito/deletetuote.php', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
