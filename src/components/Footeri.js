@@ -1,7 +1,22 @@
 import React from 'react';
 import logo from '../images/logo.png';
+import {useState, useEffect} from 'react';
 
-function Footeri() {
+export default function Footeri() {
+const [hours, setHours] = useState([]);
+
+useEffect(() => {
+  fetch('http://localhost/kirjakauppa/footer/getopenhours.php')
+  .then(response => response.json())
+  .then(
+    (response) => {
+      setHours(response);
+    }, (error) => {
+      alert(error);
+    }
+  )
+}, [])
+
     return (
         <footer className="pt-4 pt-md-5 ml-3 border-top">
         <div className="row">
@@ -12,13 +27,15 @@ function Footeri() {
           <div className="col-sm-12 col-md-6 col-lg-3">
             <h5>Aukioloajat</h5>
             <ul className="list-unstyled text-small">
-              <li>Maanantai 7.00 - 19.00</li>
-              <li>Tiistai 7.00 - 19.00</li>
-              <li>Keskiviikko 7.00 - 19.00</li>
-              <li>Torstai 7.00 - 19.00</li>
-              <li>Perjantai 7.00 - 19.00</li>
-              <li>Launtai 9.00 - 17.00</li>
-              <li>Sunnutai 10.00 - 15.00</li>
+              {hours.map(aukiolo => (
+                <li key={aukiolo.paiva}>
+                  {aukiolo.paiva}
+                  {": "}
+                  {aukiolo.auki}
+                  {" - "} 
+                  {aukiolo.kiinni}
+                  </li>
+              ))}
             </ul>
           </div>
           <div className="col-sm-12 col-md-6 col-lg-3">
@@ -41,6 +58,4 @@ function Footeri() {
         </div>
       </footer>
     );
-    }
-
-export default Footeri;
+  }
