@@ -1,7 +1,7 @@
 import './App.css';
 import './styles/colors.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useCallback} from 'react';
 import {Switch, Route, useLocation} from 'react-router-dom';
 import Footeri from './components/Footeri';
 import Navbar from './components/Navbar';
@@ -39,12 +39,12 @@ function App() {
     }
   }, [location.state])
 
-  // aseta tuote TÄMÄ ON VIRHEELLINEN
-  useEffect(() => {
-    if (location.state!==undefined) {
-      setProduct({id: location.state.id});
-    }
-  }, [location.state])
+  // aseta tuote TÄMÄ VÄÄRIN/TARPEETON? ks myös rivi 88
+  // useCallback(() => {
+  //   if (product.id!==undefined) {
+  //     setProduct({id: product.id});
+  //   }
+  // }, [product])
   
 
   // lisää tuote ostoskoriin

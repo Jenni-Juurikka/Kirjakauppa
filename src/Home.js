@@ -7,7 +7,7 @@ import './styles/spacing.css';
 export default function Home({url, tuoteryhma, search, addToCart, user, setProduct}) {
     const [products, setProducts] = useState([]);
 
-    // hae kaikki tuotteet 
+    // hae kaikki tuotteet (tämä on väärässä kohdassa/pitäisi olla joku true/false juttu?)
     // if (tuoteryhma === null) {
     //    let address = url + 'products/getallproducts.php/';
 
@@ -27,7 +27,7 @@ export default function Home({url, tuoteryhma, search, addToCart, user, setProdu
                 const json = await response.json();
                 if (response.ok) {
                     setProducts(json);
-                    setProduct(json[0]);
+                    setProduct(json[0]); // tän johdosta tuotesivu näyttää aina tuoteryhmän ekan tuotteen
                 } else {
                     alert(json.error);
                 }
@@ -45,7 +45,7 @@ export default function Home({url, tuoteryhma, search, addToCart, user, setProdu
             <div className="row">
                 {products.map(tuote => (
                     <div className="col-6 col-md-4 col-lg-3" key={tuote.id}>
-                        <Link to='/tuotesivu'>
+                        <Link to='/tuotesivu/' /* tähän kai pitäisi saada tieto mikä tuote valittuna */>
                             <div className="book">
                                 <h6>{tuote.name}</h6></div>
                             <div className="book_img img-fluid">
@@ -66,3 +66,4 @@ export default function Home({url, tuoteryhma, search, addToCart, user, setProdu
 }
 
 //to={{pathname: '/tuotesivu/', state: {id: tuote.id, name: tuote.name}}}
+// ^ ei toiminut
