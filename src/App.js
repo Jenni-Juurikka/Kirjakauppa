@@ -39,12 +39,12 @@ function App() {
     }
   }, [location.state])
 
-  // aseta tuote TÄMÄ VÄÄRIN/TARPEETON? ks myös rivi 88
-  // useCallback(() => {
-  //   if (product.id!==undefined) {
-  //     setProduct({id: product.id});
-  //   }
-  // }, [product])
+  // aseta tuote 
+  useCallback(() => {
+    if (tuote!==undefined) {
+      setProduct({tuote});
+    }
+  }, [tuote])
   
 
   // lisää tuote ostoskoriin

@@ -13,7 +13,7 @@ export default function Home({url, tuoteryhma, search, addToCart, user, setProdu
     //    let address = url + 'products/getallproducts.php/';
 
     // hae valitun tuoteryhmän tuotteet
-    useEffect(async() => {
+    useEffect(() => {
         async function getProducts() {
             if (tuoteryhma !== null /*|| search !== ''*/) {
                 let address = '';
@@ -40,11 +40,11 @@ export default function Home({url, tuoteryhma, search, addToCart, user, setProdu
         }
         getProducts();
         
-    }, [tuoteryhma,search])
+    }, [tuoteryhma,search, setProduct])
 
     function handleClick(tuote) {
         setProduct(tuote);
-        history.push("/tuotesivu");
+        history.push("/tuotesivu/" + tuote.id); // url vaihtuu, mutta tuotesivu ei aukea
     }
 
     return (

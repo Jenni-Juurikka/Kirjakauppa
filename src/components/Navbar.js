@@ -9,19 +9,23 @@ export default function Navbar({url, cart, setCategory, user}) {
 
     const [categories, setCategories] = useState([]);
 
-    useEffect(async() => {
-        try {
-            const response = await fetch(url + 'products/getcategories.php');
-            const json = await response.json();
-            if (response.ok) {
-                setCategories(json);
-                setCategory(json[0]);
-            } else {
-                alert(json.error);
+    useEffect(() => {
+        async function getCategories() {
+            try {
+                const response = await fetch(url + 'products/getcategories.php');
+                const json = await response.json();
+                if (response.ok) {
+                    setCategories(json);
+                    setCategory(json[0]);
+                } else {
+                    alert(json.error);
+                }
+            } catch (error) {
+                alert(error);
             }
-        } catch (error) {
-            alert(error);
         }
+        getCategories();
+        
     }, []);
 
 

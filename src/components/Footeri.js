@@ -3,21 +3,23 @@ import logo from '../images/logo.png';
 import {useState, useEffect} from 'react';
 
 export default function Footeri({url}) {
-const [hours, setHours] = useState([]);
+  const [hours, setHours] = useState([]);
 
-useEffect(() => {
-  fetch(url + '/footer/getopenhours.php')
-  .then(response => response.json())
-  .then(
-    (response) => {
-      setHours(response);
-    }, (error) => {
-      alert(error);
-    }
-  )
-}, [])
+  useEffect(() => {
+    fetch(url + '/footer/getopenhours.php')
+    .then(response => {
+      return response.json()
+    })
+    .then(
+      (response) => {
+        setHours(response);
+      }, (error) => {
+        alert(error);
+      }
+    )
+  }, [])
 
-    return (
+  return (
         <footer className="pt-4 pt-md-5 ml-3 border-top">
         <div className="row">
           <div className="col-sm-12 col-md-6 col-lg-3">
@@ -26,7 +28,7 @@ useEffect(() => {
           </div>
           <div className="col-sm-12 col-md-6 col-lg-3">
             <h5>Aukioloajat</h5>
-            <ul className="list-unstyled text-small">
+            {/* <ul className="list-unstyled text-small">
               {hours.map(aukiolo => (
                 <li key={aukiolo.paiva}>
                   {aukiolo.paiva}
@@ -36,7 +38,7 @@ useEffect(() => {
                   {aukiolo.kiinni}
                   </li>
               ))}
-            </ul>
+            </ul> */}
           </div>
           <div className="col-sm-12 col-md-6 col-lg-3">
             <h5>Yhteystiedot</h5>
@@ -57,5 +59,5 @@ useEffect(() => {
           </div>
         </div>
       </footer>
-    );
-  }
+  );
+}

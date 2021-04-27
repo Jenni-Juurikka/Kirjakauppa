@@ -15,7 +15,7 @@ const kirjatyyppi = [
 
 export default function Tuotesivu({url, tuote, addToCart}) {
 
-  const [product, setProductdata] = useState([]);
+  //const [product, setProductdata] = useState([]);
   // // hae valitun tuotteen tiedot
   // useEffect(async() => {
   //     if (tuote !== null ) {
@@ -52,14 +52,14 @@ export default function Tuotesivu({url, tuote, addToCart}) {
             {/* about_book_content */}
             <div className="about_book_content col-md-6">
               <div className="book_name col-md-12 col-sm-12  text-center">
-                <h3>{product.name}</h3>
-                <p>{product.author}</p>
+                <h3>{tuote.name}</h3>
+                <p>{tuote.author}</p>
               </div>
               {/* funfacts alku */}
               <div className="funfacts col-md-12 text-center">
                 Kovakantinen
                 <div className="hinta text-center">
-                  {product.price}
+                  {tuote.price}
                 </div>
                 <hr></hr>
                 {/* add_to_cart alku */}
