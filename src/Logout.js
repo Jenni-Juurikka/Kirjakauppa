@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react'
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
-export default function Logout({setUser}) {
+export default function Logout({setUser,user}) {
     useEffect(() => {
       async function logout() {
         const config = {
@@ -9,7 +9,7 @@ export default function Logout({setUser}) {
           credentials: 'include'
         }
 
-        const url = 'http://localhost/kirjakauppa/logout.php';
+        const url = 'http://localhost/kirjakauppa/login/logout.php';
         try {
           const response = await fetch(url,config);
           setUser(null);
@@ -19,6 +19,11 @@ export default function Logout({setUser}) {
       }
       logout();
     }, [])
+
+    if (user===null) {
+      return <Redirect to="/login" />
+    }
+
     return (
         <div>
             <p>Olet kirjautunut ulos.</p>

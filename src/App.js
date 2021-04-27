@@ -76,6 +76,8 @@ function App() {
         url={URL} 
         cart={cart} 
         setCategory={setCategory}
+        user={user}
+        setUser={setUser}
       />
       {/*tuoteryhmän valinta */}
       <div id="content" className="container-fluid p-2 p-sm-3 p-lg-4">
@@ -125,7 +127,8 @@ function App() {
           }
           />
           <Route path="/logout" render={() => 
-            <Logout setUser={setUser} />  
+            <Logout setUser={setUser}
+            user={user} />  
           }
         />
         </Switch>
