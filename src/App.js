@@ -19,7 +19,7 @@ const URL = "http://localhost/kirjakauppa/";
 
 function App() {
   const [tuoteryhma, setCategory] = useState(null);
-  const [product, setProduct] = useState(null);
+  const [tuote, setProduct] = useState(null);
   const [cart, setCart] = useState([]);
   const [user, setUser] = useState(null);
 
@@ -100,7 +100,7 @@ function App() {
           <Route path="/tuotesivu" render={() =>
             <Tuotesivu 
               url={URL}
-              tuote={product}
+              tuote={tuote}
               addToCart={addToCart}
             />}
           />

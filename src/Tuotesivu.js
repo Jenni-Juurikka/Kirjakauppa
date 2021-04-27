@@ -2,7 +2,7 @@ import "./styles/tuotesivu.css";
 import $ from 'jquery';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import {useLocation} from 'react-router-dom';
+import {Redirect, useLocation} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 
 
@@ -16,25 +16,29 @@ const kirjatyyppi = [
 export default function Tuotesivu({url, tuote, addToCart}) {
 
   const [product, setProductdata] = useState([]);
-  // hae valitun tuotteen tiedot
-  useEffect(async() => {
-      if (tuote !== null ) {
-          let address = url + 'products/getproductdata.php/' + tuote?.id;
+  // // hae valitun tuotteen tiedot
+  // useEffect(async() => {
+  //     if (tuote !== null ) {
+  //         let address = url + 'products/getproductdata.php/' + tuote?.id;
 
-          try {
-              const response = await fetch(address);
-              const json = await response.json();
-              if (response.ok) {
-                  setProductdata(json);
-              } else {
-                  alert(json.error);
-              }
-          } catch (error) {
-              alert(error);
-          }
-      }
+  //         try {
+  //             const response = await fetch(address);
+  //             const json = await response.json();
+  //             if (response.ok) {
+  //                 setProductdata(json);
+  //             } else {
+  //                 alert(json.error);
+  //             }
+  //         } catch (error) {
+  //             alert(error);
+  //         }
+  //     }
       
-  }, [tuote])
+  // }, [tuote])
+
+  if (tuote === null) {
+    return <Redirect to="/" />
+  }
 
   return (
     <div>

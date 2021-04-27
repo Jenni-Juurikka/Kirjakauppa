@@ -94,38 +94,6 @@ export default function Yllapito({url}) {
         )
     }
 
-    // function updateTuoteryhma(id) {
-
-                //     let status = 0;
-
-                //     fetch(url + 'yllapito/saveupdatetr.php', {
-                //         method: 'POST',
-                //         headers: {
-                //             'Accept': 'application/json',
-                //             'Content-Type': 'application/json',
-                //         },
-                //         body: JSON.stringify({
-                //             id: id,
-                //             name: trname
-                //         })
-                //     })
-                //     .then(res => {
-                //         status = parseInt(res.status);
-                //         return res.json();
-                //     })
-                //     .then(
-                //         (res) => {
-                //             if (status === 200) {
-                //                 setTuoteryhmat(res);
-                //               } else {
-                //                 alert(res.error);
-                //               }
-                //         }, (error) => {
-                //             alert(error);
-                //         }
-                //     )
-    // }
-
     // tuotteet
     useEffect(() => {
         let status = 0;
@@ -237,7 +205,6 @@ export default function Yllapito({url}) {
                                 <td>{tuoteryhma.id}</td>
                                 <td>{tuoteryhma.name}</td>
                                 <td><a className="delete" onClick={() => deleteTuoteryhma(tuoteryhma.id)} href="#">Poista</a></td>
-                                {/* <td><a className="update" onClick={() => updateTuoteryhma(tuoteryhma.id)} href="#">Muokkaa</a></td> */}
                             </tr>
                         </table>
                     ))}
@@ -278,7 +245,6 @@ export default function Yllapito({url}) {
                                 <td><img src={url + 'img/img_' + tuote.id + '.png'} className="img-fluid" width="40"/></td>
                                 <td>{tuote.category_id}</td>
                                 <td><a className="delete" onClick={() => deleteTuote(tuote.id)} href="#">Poista</a></td>
-                                {/* <td><a className="update" onClick={() => updateTuote(tuote.id)} href="#">Muokkaa</a></td> */}
                             </tr>
                         </table>
                     ))}
