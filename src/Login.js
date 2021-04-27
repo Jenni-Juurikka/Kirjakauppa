@@ -36,7 +36,7 @@ export default function Login({url}) {
 
     if (response.ok) {
       alert('Kirjautuminen onnistui!');
-      history.push('/');
+      history.push('/testi');
     } else {
       if (response.status === 401) {
         alert('Virhe kirjautumisessa.');
@@ -74,6 +74,10 @@ export default function Login({url}) {
         }
       )
     }
+
+    function refreshPage(){ 
+      window.location.reload(); 
+  }
 
 
     return (
@@ -144,7 +148,7 @@ export default function Login({url}) {
                     onChange={e => setMaa(e.target.value)}/>
                 </div>
                 <div className="marginia">
-                    <button  className="tilausnappi">Luo Käyttäjätunnus</button>
+                    <button onClick={refreshPage} className="tilausnappi">Luo Käyttäjätunnus</button>
                 </div>
             </div>
         </form>

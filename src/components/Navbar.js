@@ -3,8 +3,9 @@ import {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Cart from './Cart';
 import '../styles/colors.css';
+import Logout from '../Logout';
 
-export default function Navbar({url, cart, setCategory}) {
+export default function Navbar({url, cart, setCategory, user}) {
 
     const [categories, setCategories] = useState([]);
 
@@ -22,6 +23,8 @@ export default function Navbar({url, cart, setCategory}) {
             alert(error);
         }
     }, []);
+
+
 
     return (
         <nav className="navbar navbar-expand-md navbar-light">
