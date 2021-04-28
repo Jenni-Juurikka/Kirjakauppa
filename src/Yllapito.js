@@ -11,6 +11,8 @@ export default function Yllapito({url}) {
     const [price , setPrice] = useState('');
     //const [image , setImage] = useState();
     const [category_id , setCategory_id] = useState('');
+    const [asiakkaat, setAsiakkaat] = useState([]);
+    const [tilaukset, setTilaukset] = useState([]);
     //const [ , set] = useState();
 
     // tuoteryhmät
@@ -183,6 +185,48 @@ export default function Yllapito({url}) {
         )
     }
 
+    // asiakkaat
+    useEffect(() => {
+        let status = 0;
+        fetch(url + 'yllapito/showasiakkaat.php')
+        .then(res => {
+            status = parseInt(res.status);
+            return res.json()
+        })
+        .then(
+            (res) => {
+                if (status === 200) {
+                setAsiakkaat(res);
+                } else {
+                alert(res.error);
+                }
+            }, (error) => {
+                alert(error);
+            }
+        )
+    }, [])
+
+    // tilaukset
+    useEffect(() => {
+        let status = 0;
+        fetch(url + 'yllapito/showtilaukset.php')
+        .then(res => {
+            status = parseInt(res.status);
+            return res.json()
+        })
+        .then(
+            (res) => {
+                if (status === 200) {
+                setTilaukset(res);
+                } else {
+                alert(res.error);
+                }
+            }, (error) => {
+                alert(error);
+            }
+        )
+    }, [])
+
 
     return (
         <div>
@@ -233,6 +277,7 @@ export default function Yllapito({url}) {
                     </div>
                 </form>
             </div>
+            <h4>Tuotteet</h4>
             <div>
                 <ol>
                     {tuotteet.map(tuote => (
@@ -245,6 +290,39 @@ export default function Yllapito({url}) {
                                 <td><img src={url + 'img/img_' + tuote.id + '.png'} className="img-fluid" width="40"/></td>
                                 <td>{tuote.category_id}</td>
                                 <td><a className="delete" onClick={() => deleteTuote(tuote.id)} href="#">Poista</a></td>
+                            </tr>
+                        </table>
+                    ))}
+                </ol>
+            </div>
+            <h4>Asiakkaat</h4>
+            <div>
+                <ol>
+                    {asiakkaat.map(asiakas => (
+                        <table className="table" key={asiakas.id}>
+                            <tr>
+                                <td>{asiakas.id}</td>
+                                <td>{asiakas.asnimi}</td>
+                                <td>{asiakas.puhelinro}</td>
+                                <td>{asiakas.osoite}</td>
+                                <td>{asiakas.postitmp}</td>
+                                <td>{asiakas.postinro}</td>
+                                <td>{asiakas.maa}</td>
+                            </tr>
+                        </table>
+                    ))}
+                </ol>
+            </div>
+            <h4>Tilaukset</h4>
+            <div>
+                <ol>
+                    {tilaukset.map(tilaus => (
+                        <table className="table" key={tilaus.tilausnro}>
+                            <tr>
+                                <td>{tilaus.tilausnro}</td>
+                                <td>{tilaus.astunnus}</td>
+                                <td>{tilaus.tilauspvm}</td>
+                                <td></td>
                             </tr>
                         </table>
                     ))}

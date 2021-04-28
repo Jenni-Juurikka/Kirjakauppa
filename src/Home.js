@@ -15,14 +15,17 @@ export default function Home({url, tuoteryhma, search, addToCart, user, setProdu
     // hae valitun tuoteryhmän tuotteet
     useEffect(() => {
         async function getProducts() {
-            if (tuoteryhma !== null /*|| search !== ''*/) {
+            //if (tuoteryhma !== null /*|| search !== ''*/) {
                 let address = '';
     
                 if (tuoteryhma !== null) {
                     address = url + 'products/getproducts.php/' + tuoteryhma?.id;
-                } /*else if (search !== null) {
-                    address = url + 'products/search.php/' + searchphrase;
-                }*/ 
+                } else {
+                    address = url + 'products/getallproducts.php/';
+                }
+                //else if (search !== null) {
+                //    address = url + 'products/search.php/' + searchphrase;
+                //}
     
                 try {
                     const response = await fetch(address);
@@ -36,7 +39,7 @@ export default function Home({url, tuoteryhma, search, addToCart, user, setProdu
                 } catch (error) {
                     alert(error);
                 }
-            }
+            //}
         }
         getProducts();
         
