@@ -22,6 +22,7 @@ function App() {
   const [tuote, setProduct] = useState(null);
   const [cart, setCart] = useState([]);
   const [user, setUser] = useState(null);
+  const [searchCriteria, setSearchCriteria] = useState(null);
 
   let location = useLocation();
 
@@ -68,6 +69,10 @@ function App() {
     localStorage.removeItem('cart');
   }
 
+  function search(criteria) {
+    setSearchCriteria(criteria);
+  }
+
   return (
   <div className="bg-color">
     <div className="container page-color">
@@ -78,6 +83,8 @@ function App() {
         setCategory={setCategory}
         user={user}
         setUser={setUser}
+        search={search}
+        criteria={searchCriteria}
       />
       {/*tuoteryhmän valinta */}
       <div id="content" className="container-fluid p-2 p-sm-3 p-lg-4">
