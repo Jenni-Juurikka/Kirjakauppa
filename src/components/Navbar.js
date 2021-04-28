@@ -23,7 +23,7 @@ export default function Navbar({url, cart, setCategory, user, search, criteria})
                 const json = await response.json();
                 if (response.ok) {
                     setCategories(json);
-                    setCategory(json[0]);
+                    //setCategory(json[0]);
                 } else {
                     alert(json.error);
                 }
