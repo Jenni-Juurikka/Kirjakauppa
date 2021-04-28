@@ -32,7 +32,7 @@ export default function Home({url, tuoteryhma, search, addToCart, user, setProdu
                     const json = await response.json();
                     if (response.ok) {
                         setProducts(json);
-                        setProduct(json[0]); 
+                        //setProduct(json[0]); 
                     } else {
                         alert(json.error);
                     }
@@ -55,17 +55,18 @@ export default function Home({url, tuoteryhma, search, addToCart, user, setProdu
             <h3>{tuoteryhma?.name}</h3>
             <div className="row">
                 {products.map(tuote => (
-                    <div className="col-6 col-md-4 col-lg-3" key={tuote.id} onClick={() => handleClick(tuote)}>
+                    <div className="col-6 col-md-4 col-lg-3" key={tuote.id}  onClick={() => handleClick(tuote)}>
                         
                             <div className="book">
-                                <h6>{tuote.name}</h6></div>
+                                <h6>{tuote.name}</h6>
+                            </div>
                             <div className="book_img img-fluid">
                                 <img src={url + 'img/img_' + tuote.id + '.png'} className="img-fluid"/>
                             </div>
                             <p className="book_author">{tuote.author}</p>
                             <p>{tuote.price + "€"}</p>
                         
-                        <button className=" btn btn-primary" type="button" onClick={e => addToCart(tuote)}>
+                        <button className=" btn btn-primary" type="button" onClick={() => addToCart(tuote)}>
                             Lisää ostoskoriin
                         </button>
                     </div>

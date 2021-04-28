@@ -284,7 +284,7 @@ export default function Yllapito({url}) {
                         <table className="table" key={tuote.id}>
                             <tr>
                                 <td>{tuote.id}</td>
-                                <td>{tuote.name}</td>
+                                <td /*onClick={() => handleClick(tuote)}*/>{tuote.name}</td>
                                 <td>{tuote.author}</td>
                                 <td>{tuote.price}</td>
                                 <td><img src={url + 'img/img_' + tuote.id + '.png'} className="img-fluid" width="40"/></td>
@@ -297,11 +297,12 @@ export default function Yllapito({url}) {
             </div>
             <h4>Asiakkaat</h4>
             <div>
+                
                 <ol>
                     {asiakkaat.map(asiakas => (
-                        <table className="table" key={asiakas.id}>
+                        <table className="table" key={asiakas.astunnus}>
                             <tr>
-                                <td>{asiakas.id}</td>
+                                <td>{asiakas.astunnus}</td>
                                 <td>{asiakas.asnimi}</td>
                                 <td>{asiakas.puhelinro}</td>
                                 <td>{asiakas.osoite}</td>
@@ -322,7 +323,7 @@ export default function Yllapito({url}) {
                                 <td>{tilaus.tilausnro}</td>
                                 <td>{tilaus.astunnus}</td>
                                 <td>{tilaus.tilauspvm}</td>
-                                <td></td>
+                                <td>{tilaus.name}</td>
                             </tr>
                         </table>
                     ))}

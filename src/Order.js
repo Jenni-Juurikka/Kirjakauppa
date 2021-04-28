@@ -5,7 +5,7 @@ import './styles/asiakastiedot.css';
 
 
 
-export default function Order({url, cart, empty, removeFromCart, updateAmount}) {
+export default function Order({url, cart, empty, removeFromCart}) {
     const[asnimi ,setAsnimi] = useState('');
     const[puhelinro ,setPuhelinro] = useState('');
     const[osoite ,setOsoite] = useState('');

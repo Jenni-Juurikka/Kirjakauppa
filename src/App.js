@@ -40,11 +40,11 @@ function App() {
   }, [location.state])
 
   // aseta tuote 
-  useCallback(() => {
-    if (tuote!==undefined) {
-      setProduct({tuote});
-    }
-  }, [tuote])
+  // useCallback(() => {
+  //   if (tuote!==undefined) {
+  //     setProduct(tuote);
+  //   }
+  // }, [tuote])
   
 
   // lisää tuote ostoskoriin
@@ -87,6 +87,7 @@ function App() {
             tuoteryhma={tuoteryhma}
             /*search={searchPhrase}*/ 
             addToCart={addToCart}
+            user={user}
             setProduct={setProduct}
             />}
             exact
