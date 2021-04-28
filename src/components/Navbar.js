@@ -5,11 +5,18 @@ import Cart from './Cart';
 import '../styles/colors.css';
 import Logout from '../Logout';
 
-export default function Navbar({url, cart, setCategory, user}) {
+export default function Navbar({url, cart, setCategory, user, search, criteria}) {
 
     const [categories, setCategories] = useState([]);
+    const [criteria, setCriteria] = useState('');
 
     useEffect(() => {
+        let address = url + 'getcategories.php';
+
+        if (criteria != null) {
+            address = url + 'search.php/' + criteria;
+        }
+
         async function getCategories() {
             try {
                 const response = await fetch(url + 'products/getcategories.php');
@@ -26,9 +33,12 @@ export default function Navbar({url, cart, setCategory, user}) {
         }
         getCategories();
         
-    }, []);
+    }, [criteria]);
 
-
+    function goSearch(e) {
+        e.preventDefault();
+        search(criteria);
+    }
 
     return (
         <nav className="navbar navbar-expand-md navbar-light">
@@ -67,6 +77,10 @@ export default function Navbar({url, cart, setCategory, user}) {
                     </li>
                 </ul>
             </div>
+            <form onSubmit={goSearch}>
+                <button className="btn btn-secondary">Hae</button>&nbsp;
+                <input placeholder="Mitä haluat hakea?" value={criteria} onChange={e => setCriteria(e.target.value)}/>
+            </form>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-link">
                     <Link id="yp" to="/yllapito">Ylläpito</Link>
