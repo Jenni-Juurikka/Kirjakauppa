@@ -38,7 +38,7 @@ export default function Home({url, tuoteryhma, search, addToCart, user, setProdu
         }
         getProducts();
         
-    }, [tuoteryhma,search, setProduct])
+    }, [tuoteryhma,search, setProduct]);
 
     // valitse tuotesivulla näytettävä tuote
     function handleClick(tuote) {

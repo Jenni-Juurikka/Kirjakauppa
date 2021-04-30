@@ -11,7 +11,7 @@ export default function Navbar({url, cart, user, search, /*criteria*/}) {
     //const [criteria, setCriteria] = useState('');
 
     useEffect(() => {
-        let address = url + 'getcategories.php';
+        // let address = url + 'getcategories.php';
 
         // if (criteria !== null) {
         //     address = url + 'search.php/' + criteria;

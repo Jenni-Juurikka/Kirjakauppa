@@ -22,7 +22,7 @@ export default function Yllapito({url}) {
         fetch(url + 'yllapito/showtuoteryhmat.php')
         .then(res => {
             status = parseInt(res.status);
-            return res.json()
+            return res.json();
         })
         .then(
             (res) => {
@@ -34,8 +34,8 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
-    }, [])
+        );
+    }, []);
 
     // lisää tuoteryhmä
     function addTuoteryhma(tr) {
@@ -65,7 +65,7 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
+        );
     }
 
     // poista tuoteryhmä
@@ -96,7 +96,7 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
+        );
     }
 
     // tuotteet
@@ -107,7 +107,7 @@ export default function Yllapito({url}) {
         fetch(url + 'yllapito/showtuotteet.php')
         .then(res => {
             status = parseInt(res.status);
-            return res.json()
+            return res.json();
         })
         .then(
             (res) => {
@@ -119,16 +119,14 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
-    }, [])
+        );
+    }, []);
 
     // lisää tuote
     function addTuote(t) {
         t.preventDefault();
         let status = 0;
-        let address = url + 'yllapito/savetuote.php';
-        console.log(address);
-        fetch(address, {
+        fetch(url + 'yllapito/savetuote.php', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -160,7 +158,7 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
+        );
     }
 
     // poista tuote
@@ -191,7 +189,7 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
+        );
     }
 
     // asiakkaat
@@ -202,7 +200,7 @@ export default function Yllapito({url}) {
         fetch(url + 'yllapito/showasiakkaat.php')
         .then(res => {
             status = parseInt(res.status);
-            return res.json()
+            return res.json();
         })
         .then(
             (res) => {
@@ -214,8 +212,8 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
-    }, [])
+        );
+    }, []);
 
     // tilaukset
 
@@ -225,7 +223,7 @@ export default function Yllapito({url}) {
         fetch(url + 'yllapito/showtilaukset.php')
         .then(res => {
             status = parseInt(res.status);
-            return res.json()
+            return res.json();
         })
         .then(
             (res) => {
@@ -237,8 +235,8 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
-    }, [])
+        );
+    }, []);
 
 
     // tulosta kaikki edellä kuvatut

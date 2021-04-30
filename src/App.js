@@ -31,14 +31,14 @@ function App() {
     if ('cart' in localStorage) {
       setCart(JSON.parse(localStorage.getItem('cart')));
     }
-  }, [])
+  }, []);
 
   // aseta tuoteryhmä
   useEffect(() => {
     if (location.state!==undefined) {
       setCategory({id: location.state.id,name: location.state.name});
     }
-  }, [location.state])
+  }, [location.state]);
   
 
   // lisää tuote ostoskoriin
