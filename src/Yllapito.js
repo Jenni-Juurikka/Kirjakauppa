@@ -13,8 +13,6 @@ export default function Yllapito({url}) {
     const [category_id , setCategory_id] = useState('');
     const [asiakkaat, setAsiakkaat] = useState([]);
     const [tilaukset, setTilaukset] = useState([]);
-
-
     // tuoteryhmät
 
     // hae tuoteryhmät
@@ -53,7 +51,6 @@ export default function Yllapito({url}) {
             })
         })
         .then(res => {
-            status = parseInt(res.status);
             return res.json();
         })
         .then(
@@ -144,7 +141,6 @@ export default function Yllapito({url}) {
             })
         })
         .then(res => {
-            status = parseInt(res.status);
             return res.json();
         })
         .then(
