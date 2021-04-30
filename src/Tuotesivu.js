@@ -26,7 +26,7 @@ export default function Tuotesivu({url, tuote, addToCart}) {
         <div className="row">
             {/* picture alku */}
             <div className="picture col-md-6 col-sm-12" >
-              <img src={url + 'img/img_' + tuote.id + '.png'} style={{width: 300}}/>
+              <img src={url + 'img/img_' + tuote.id + '.png'} />
             </div>
             {/* picture stoppi */}
             {/* about_book_content */}
@@ -40,6 +40,7 @@ export default function Tuotesivu({url, tuote, addToCart}) {
                 Kovakantinen
                 <div className="hinta text-center">
                   {tuote.price}
+                  {" €"}
                 </div>
                 <hr></hr>
                 {/* add_to_cart alku */}
@@ -70,7 +71,11 @@ export default function Tuotesivu({url, tuote, addToCart}) {
         <div className="my-3 tuotekuvaus">
           <div className="m-3">
           <h3>Tuotekuvaus</h3>
+<<<<<<< HEAD
             {tuote.description}
+=======
+          {tuote.description}
+>>>>>>> 741e7045cc80f8fc8d4012638fcdbacc0e629344
           </div>
         </div>
         {/* tuotekuvaus stoppi */}
