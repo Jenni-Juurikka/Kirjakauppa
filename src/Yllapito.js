@@ -9,6 +9,7 @@ export default function Yllapito({url}) {
     const [author , setAuthor] = useState('');
     const [price , setPrice] = useState('');
     const [image , setImage] = useState();
+    const [description, setDescription] = useState('');
     const [category_id , setCategory_id] = useState('');
     const [asiakkaat, setAsiakkaat] = useState([]);
     const [tilaukset, setTilaukset] = useState([]);
@@ -137,6 +138,7 @@ export default function Yllapito({url}) {
                 author: author,
                 price: price,
                 image: image,
+                description: description,
                 category_id: category_id
             })
         })
@@ -151,6 +153,7 @@ export default function Yllapito({url}) {
                     setAuthor('');
                     setPrice('');
                     setImage('');
+                    setDescription('')
                     setCategory_id('');
                 } else {
                     alert(res.error);
@@ -280,6 +283,9 @@ export default function Yllapito({url}) {
                         <input placeholder="Kuva" value={image} onChange={t => setImage(t.target.value)}/>
                     </div>
                     <div className="marginia">
+                        <input placeholder="Kuvaus" value={description} onChange={t => setDescription(t.target.value)}/>
+                    </div>
+                    <div className="marginia">
                         <input placeholder="Kategoria" type="number" min="1" value={category_id} onChange={t => setCategory_id(t.target.value)}/>
                     </div>
                     <div>
@@ -297,6 +303,7 @@ export default function Yllapito({url}) {
                                 <td>{tuote.author}</td>
                                 <td>{tuote.price}</td>
                                 <td><img src={url + 'img/img_' + tuote.id + '.png'} className="img-fluid" width="40"/></td>
+                                <td>{tuote.description}</td>
                                 <td>{tuote.category_id}</td>
                                 <td><a className="delete" onClick={() => deleteTuote(tuote.id)} href="#">Poista</a></td>
                             </tr>
