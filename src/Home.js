@@ -58,16 +58,14 @@ export default function Home({url, tuoteryhma, search, addToCart, user, setProdu
             <div className="row">
                 {products.map(tuote => (
                     <div className="col-6 col-md-4 col-lg-3" key={tuote.id}  onClick={() => handleClick(tuote)}>
-                        
-                            <div className="book">
-                                <h6>{tuote.name}</h6>
-                            </div>
-                            <div className="book_img img-fluid">
-                                <img src={url + 'img/img_' + tuote.id + '.png'} className="img-fluid"/>
-                            </div>
-                            <p className="book_author">{tuote.author}</p>
-                            <p>{tuote.price + "€"}</p>
-                        
+                        <div className="book">
+                            <h6>{tuote.name}</h6>
+                        </div>
+                        <div className="book_img img-fluid">
+                            <img src={url + 'img/img_' + tuote.id + '.png'} className="img-fluid"/>
+                        </div>
+                        <p className="book_author">{tuote.author}</p>
+                        <p>{tuote.price + "€"}</p>
                         <button className=" btn btn-primary" type="button" onClick={() => addToCart(tuote)}>
                             Lisää ostoskoriin
                         </button>
