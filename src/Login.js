@@ -36,7 +36,7 @@ export default function Login({url}) {
 
     if (response.ok) {
       alert('Kirjautuminen onnistui!');
-      history.push('/testi');
+      history.push('/');
     } else {
       if (response.status === 401) {
         alert('Virhe kirjautumisessa.');

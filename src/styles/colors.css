@@ -23,4 +23,9 @@ nav ul .dropdown-menu :hover {
     background-color:#ff9942 !important;
     border-color:#ff9942 !important;
     color: black !important;
+} .pointer {
+    cursor: pointer;
+} .linkki:hover {
+    color: blue;
+    text-decoration: underline;
 }

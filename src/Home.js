@@ -58,10 +58,10 @@ export default function Home({url, tuoteryhma, search, addToCart, user, setProdu
             <div className="row">
                 {products.map(tuote => (
                     <div className="col-6 col-md-4 col-lg-3" key={tuote.id}  onClick={() => handleClick(tuote)}>
-                        <div className="book">
+                        <div className="book linkki pointer">
                             <h6>{tuote.name}</h6>
                         </div>
-                        <div className="book_img img-fluid">
+                        <div className="book_img img-fluid pointer">
                             <img src={url + 'img/img_' + tuote.id + '.png'} className="img-fluid"/>
                         </div>
                         <p className="book_author">{tuote.author}</p>
