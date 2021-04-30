@@ -5,17 +5,17 @@ import Cart from './Cart';
 import '../styles/colors.css';
 import Logout from '../Logout';
 
-export default function Navbar({url, cart, setCategory, user, search, criteria}) {
+export default function Navbar({url, cart, user, search, /*criteria*/}) {
 
     const [categories, setCategories] = useState([]);
-    const [criteria, setCriteria] = useState('');
+    //const [criteria, setCriteria] = useState('');
 
     useEffect(() => {
         let address = url + 'getcategories.php';
 
-        if (criteria !== null) {
-            address = url + 'search.php/' + criteria;
-        }
+        // if (criteria !== null) {
+        //     address = url + 'search.php/' + criteria;
+        // }
 
         async function getCategories() {
             try {
@@ -23,7 +23,6 @@ export default function Navbar({url, cart, setCategory, user, search, criteria})
                 const json = await response.json();
                 if (response.ok) {
                     setCategories(json);
-                    //setCategory(json[0]);
                 } else {
                     alert(json.error);
                 }
@@ -33,12 +32,12 @@ export default function Navbar({url, cart, setCategory, user, search, criteria})
         }
         getCategories();
         
-    }, [criteria]);
+    }, [/*criteria*/]);
 
-    function goSearch(e) {
-        e.preventDefault();
-        search(criteria);
-    }
+    // function goSearch(e) {
+    //     e.preventDefault();
+    //     search(criteria);
+    // }
 
     return (
         <nav className="navbar navbar-expand-md navbar-light">
@@ -77,10 +76,10 @@ export default function Navbar({url, cart, setCategory, user, search, criteria})
                     </li>
                 </ul>
             </div>
-            <form onSubmit={goSearch}>
+            {/* <form onSubmit={goSearch}>
                 <button className="btn btn-secondary">Hae</button>&nbsp;
                 <input placeholder="Mitä haluat hakea?" value={criteria} onChange={e => setCriteria(e.target.value)}/>
-            </form>
+            </form> */}
             <ul className="navbar-nav ml-auto">
                 <li className="nav-link">
                     <Link id="yp" to="/yllapito">Ylläpito</Link>

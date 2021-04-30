@@ -2,8 +2,7 @@ import "./styles/tuotesivu.css";
 import $ from 'jquery';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import {Redirect, useLocation} from 'react-router-dom';
-import {useEffect, useState} from 'react';
+import {Redirect} from 'react-router-dom';
 
 
 const kirjatyyppi = [
@@ -15,31 +14,12 @@ const kirjatyyppi = [
 
 export default function Tuotesivu({url, tuote, addToCart}) {
 
-  //const [product, setProductdata] = useState([]);
-  // // hae valitun tuotteen tiedot
-  // useEffect(async() => {
-  //     if (tuote !== null ) {
-  //         let address = url + 'products/getproductdata.php/' + tuote?.id;
-
-  //         try {
-  //             const response = await fetch(address);
-  //             const json = await response.json();
-  //             if (response.ok) {
-  //                 setProductdata(json);
-  //             } else {
-  //                 alert(json.error);
-  //             }
-  //         } catch (error) {
-  //             alert(error);
-  //         }
-  //     }
-      
-  // }, [tuote])
-
+  // jos ei tuotetta valittuna, mene etusivulle
   if (tuote === null) {
     return <Redirect to="/" />
   }
 
+  // tulostaa tuotesivun
   return (
     <div>
       <div className="tuotesivu_content col-md-12">
