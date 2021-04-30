@@ -4,7 +4,6 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {Redirect} from 'react-router-dom';
 
-
 const kirjatyyppi = [
   'Kovakantinen',
   'Pokkari',
@@ -25,18 +24,18 @@ export default function Tuotesivu({url, tuote, addToCart}) {
       <div className="tuotesivu_content col-md-12">
         <div className="row">
             {/* picture alku */}
-            <div className="picture col-md-6 col-sm-12" >
+            <div className="picture col-md-6 mt-md-5 img-fluid" >
               <img src={url + 'img/img_' + tuote.id + '.png'} />
             </div>
             {/* picture stoppi */}
             {/* about_book_content */}
             <div className="about_book_content col-md-6">
-              <div className="book_name col-md-12 col-sm-12  text-center">
+              <div className="book_name col-md-12 text-center">
                 <h3>{tuote.name}</h3>
                 <p>{tuote.author}</p>
               </div>
               {/* funfacts alku */}
-              <div className="funfacts col-md-12 text-center">
+              <div className="funfacts col-md-12 text-center mt-2">
                 Kovakantinen
                 <div className="hinta text-center">
                   {tuote.price}
