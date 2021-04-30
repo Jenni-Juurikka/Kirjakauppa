@@ -71,11 +71,7 @@ export default function Tuotesivu({url, tuote, addToCart}) {
         <div className="my-3 tuotekuvaus">
           <div className="m-3">
           <h3>Tuotekuvaus</h3>
-<<<<<<< HEAD
-            {tuote.description}
-=======
           {tuote.description}
->>>>>>> 741e7045cc80f8fc8d4012638fcdbacc0e629344
           </div>
         </div>
         {/* tuotekuvaus stoppi */}
