@@ -6,7 +6,14 @@ export default function Tietoja({user}) {
         return <Redirect to="/login" />
     }
     return (
-        <div>Tietoja kirjakaupasta</div>
+        <div>
+            <h3>Kirjakauppa</h3>
+            <p>Olemme pieni perheyritys, jonka liiketilat sijaitsevat Oulun keskustassa.</p>
+            <p>Arvojamme ovat ystävällinen ja asiantunteva palvelu. 
+                Toivottavasti löydät valikoimastamme sinulle sopivaa luettavaa!</p>
+            <p>Verkkokauppamme kautta palvelemme asiakkaita ympäri Suomen. 
+                Toimitamme paketit mahdollisimman nopeasti.</p>
+        </div>
     )
 
 }

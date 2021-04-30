@@ -17,7 +17,7 @@ export default function Home({url, tuoteryhma, search, addToCart, user, setProdu
     
                 if (tuoteryhma !== null) {
                     address = url + 'products/getproducts.php/' + tuoteryhma?.id;
-                } else if (tuoteryhma === null && search === null) {
+                } else if (tuoteryhma === null /*&& search === null*/) {
                     address = url + 'products/getallproducts.php/';
                 } /*else if (search !== null) {
                     address = url + 'products/search.php/' + searchphrase;
