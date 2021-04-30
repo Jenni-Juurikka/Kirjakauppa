@@ -52,6 +52,7 @@ export default function Yllapito({url}) {
             })
         })
         .then(res => {
+            status = parseInt(res.status);
             return res.json();
         })
         .then(
@@ -141,6 +142,7 @@ export default function Yllapito({url}) {
             })
         })
         .then(res => {
+            status = parseInt(res.status);
             return res.json();
         })
         .then(
