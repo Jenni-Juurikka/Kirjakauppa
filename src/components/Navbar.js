@@ -11,15 +11,14 @@ export default function Navbar({url, cart, user, search}) {
     const [criteria, setCriteria] = useState('');
 
     useEffect(() => {
-         let address = url + 'products/getcategories.php';
 
          if (criteria !== null) {
-             address = url + 'search.php/' + criteria;
+            url + 'search.php/' + criteria;
          }
 
         async function getCategories() {
             try {
-                const response = await fetch(address);
+                const response = await fetch(url + 'products/getcategories.php');
                 const json = await response.json();
                 if (response.ok) {
                     setCategories(json);
