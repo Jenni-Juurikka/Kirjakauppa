@@ -5,25 +5,21 @@ import Cart from './Cart';
 import '../styles/colors.css';
 import Logout from '../Logout';
 
-<<<<<<< HEAD
-export default function Navbar({url, cart, setCategory, user, search}) {
-=======
-export default function Navbar({url, cart, user, search, /*criteria*/}) {
->>>>>>> c861a21cdcd28ed987382456d00f794c5d3d9aa6
+export default function Navbar({url, cart, user, search, criteria}) {
 
     const [categories, setCategories] = useState([]);
-    //const [criteria, setCriteria] = useState('');
+    const [criteria, setCriteria] = useState('');
 
     useEffect(() => {
-        // let address = url + 'getcategories.php';
+         let address = url + 'products/getcategories.php';
 
-        // if (criteria !== null) {
-        //     address = url + 'search.php/' + criteria;
-        // }
+         if (criteria !== null) {
+             address = url + 'search.php/' + criteria;
+         }
 
         async function getCategories() {
             try {
-                const response = await fetch(url + 'products/getcategories.php');
+                const response = await fetch(address);
                 const json = await response.json();
                 if (response.ok) {
                     setCategories(json);
@@ -36,12 +32,12 @@ export default function Navbar({url, cart, user, search, /*criteria*/}) {
         }
         getCategories();
         
-    }, [/*criteria*/]);
+    }, [criteria]);
 
-    // function goSearch(e) {
-    //     e.preventDefault();
-    //     search(criteria);
-    // }
+    function goSearch(e) {
+        e.preventDefault();
+        search(criteria);
+    }
 
     return (
         <nav className="navbar navbar-expand-md navbar-light">
@@ -80,10 +76,10 @@ export default function Navbar({url, cart, user, search, /*criteria*/}) {
                     </li>
                 </ul>
             </div>
-            {/* <form onSubmit={goSearch}>
+            {<form onSubmit={goSearch}>
                 <button className="btn btn-secondary">Hae</button>&nbsp;
                 <input placeholder="Mitä haluat hakea?" value={criteria} onChange={e => setCriteria(e.target.value)}/>
-            </form> */}
+            </form>}
             <ul className="navbar-nav ml-auto">
                 <li className="nav-link">
                     <Link id="yp" to="/yllapito">Ylläpito</Link>
