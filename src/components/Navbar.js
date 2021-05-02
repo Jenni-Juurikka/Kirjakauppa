@@ -76,10 +76,10 @@ export default function Navbar({url, cart, user, search}) {
                     </li>
                 </ul>
             </div>
-            {<form onSubmit={goSearch}>
+            <form onSubmit={goSearch}>
                 <button className="btn btn-secondary">Hae</button>&nbsp;
                 <input placeholder="Mitä haluat hakea?" value={criteria} onChange={e => setCriteria(e.target.value)}/>
-            </form>}
+            </form>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-link">
                     <Link id="yp" to="/yllapito">Ylläpito</Link>
