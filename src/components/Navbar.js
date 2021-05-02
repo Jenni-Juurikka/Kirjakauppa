@@ -5,7 +5,7 @@ import Cart from './Cart';
 import '../styles/colors.css';
 import Logout from '../Logout';
 
-export default function Navbar({url, cart, user, search, criteria}) {
+export default function Navbar({url, cart, user, search}) {
 
     const [categories, setCategories] = useState([]);
     const [criteria, setCriteria] = useState('');
