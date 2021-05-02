@@ -36,7 +36,7 @@ export default function Navbar({url, cart, user, search}) {
 
     function goSearch(e) {
         e.preventDefault();
-        search(criteria);
+        setCriteria(criteria);
     }
 
     return (

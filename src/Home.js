@@ -8,7 +8,6 @@ import './styles/spacing.css';
 export default function Home({url, tuoteryhma, search, addToCart, user, setProduct}) {
     const [products, setProducts] = useState([]);
     const [showProduct, setShowProduct] = useState(false);
-    const [searchCriteria, setSearchCriteria] = useState(null);
 
     // hae tuotteet (kaikki/tuoteryhmästä x/hakusanalla y)
     useEffect(() => {
