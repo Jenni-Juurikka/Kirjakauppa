@@ -36,7 +36,7 @@ export default function Login({url}) {
 
     if (response.ok) {
       alert('Kirjautuminen onnistui!');
-      history.push('/testi');
+      history.push('/');
     } else {
       if (response.status === 401) {
         alert('Virhe kirjautumisessa.');
@@ -81,9 +81,9 @@ export default function Login({url}) {
 
 
     return (
-      <div className="container"> 
+      <div className="container row"> 
           <form onSubmit={login}>
-            <div className="col-sm-6">
+            <div className="col-md-12 p-lg-5">
               <h3>Kirjaudu sisään</h3>
                 <div>
                   <label>Käyttäjätunnus: </label>
@@ -105,7 +105,7 @@ export default function Login({url}) {
 
 
           <form onSubmit={registeri}>
-            <div className="col-sm-6">
+            <div className="col-md-12 ml-lg-5 p-lg-5 register-form">
                 <h3>Luo asiakastili</h3>
                 <div className="marginia">
                     <input type="text" className="form-control col-12" aria-label="Default"

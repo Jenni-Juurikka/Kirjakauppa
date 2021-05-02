@@ -2,9 +2,7 @@ import "./styles/tuotesivu.css";
 import $ from 'jquery';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import {Redirect, useLocation} from 'react-router-dom';
-import {useEffect, useState} from 'react';
-
+import {Redirect} from 'react-router-dom';
 
 const kirjatyyppi = [
   'Kovakantinen',
@@ -15,51 +13,33 @@ const kirjatyyppi = [
 
 export default function Tuotesivu({url, tuote, addToCart}) {
 
-  //const [product, setProductdata] = useState([]);
-  // // hae valitun tuotteen tiedot
-  // useEffect(async() => {
-  //     if (tuote !== null ) {
-  //         let address = url + 'products/getproductdata.php/' + tuote?.id;
-
-  //         try {
-  //             const response = await fetch(address);
-  //             const json = await response.json();
-  //             if (response.ok) {
-  //                 setProductdata(json);
-  //             } else {
-  //                 alert(json.error);
-  //             }
-  //         } catch (error) {
-  //             alert(error);
-  //         }
-  //     }
-      
-  // }, [tuote])
-
+  // jos ei tuotetta valittuna, mene etusivulle
   if (tuote === null) {
     return <Redirect to="/" />
   }
 
+  // tulostaa tuotesivun
   return (
     <div>
       <div className="tuotesivu_content col-md-12">
         <div className="row">
             {/* picture alku */}
-            <div className="picture col-md-6 col-sm-12" >
-              <img src={url + 'img/img_' + tuote.id + '.png'} style={{width: 300}}/>
+            <div className="picture col-md-6 mt-md-5 img-fluid" >
+              <img src={url + 'img/img_' + tuote.id + '.png'} />
             </div>
             {/* picture stoppi */}
             {/* about_book_content */}
             <div className="about_book_content col-md-6">
-              <div className="book_name col-md-12 col-sm-12  text-center">
+              <div className="book_name col-md-12 text-center">
                 <h3>{tuote.name}</h3>
                 <p>{tuote.author}</p>
               </div>
               {/* funfacts alku */}
-              <div className="funfacts col-md-12 text-center">
+              <div className="funfacts col-md-12 text-center mt-2">
                 Kovakantinen
                 <div className="hinta text-center">
                   {tuote.price}
+                  {" €"}
                 </div>
                 <hr></hr>
                 {/* add_to_cart alku */}
@@ -90,10 +70,7 @@ export default function Tuotesivu({url, tuote, addToCart}) {
         <div className="my-3 tuotekuvaus">
           <div className="m-3">
           <h3>Tuotekuvaus</h3>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          {tuote.description}
           </div>
         </div>
         {/* tuotekuvaus stoppi */}

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
 import uuid from 'react-uuid';
 import './styles/asiakastiedot.css';
 
 
 
-export default function Order({url, cart, empty, removeFromCart, updateAmount}) {
+export default function Order({url, cart, empty, removeFromCart}) {
     const[asnimi ,setAsnimi] = useState('');
     const[puhelinro ,setPuhelinro] = useState('');
     const[osoite ,setOsoite] = useState('');
@@ -35,7 +34,6 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
             })
         })
         .then (res => {
-            //status = parseInt(res.status);
             return res.json();
         })
         .then (
@@ -51,6 +49,7 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
 
     let sum = 0;
 
+    // ostoskorin ja tilauslomakkeen tulostus
     if (finished === false) {
         return (
             <div className="container-fluid">
@@ -62,7 +61,7 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                             sum+=parseFloat(tuote.price);
                             return (
                                 <tr key={uuid()}>
-                                    <td><Link id="tuote" to="/tuotesivu" >{tuote.name}</Link></td>
+                                    <td>{tuote.name}</td>
                                     <td>{tuote.price} €</td>
                                     <td><a href="#" onClick={() => removeFromCart(tuote)}>Poista</a></td>
                                 </tr>
@@ -72,7 +71,7 @@ export default function Order({url, cart, empty, removeFromCart, updateAmount}) 
                             <td></td>
                             <td>{sum.toFixed(2)} €</td>
                             <td></td>
-                            <td><a href="#" onClick={e => empty()}>Tyhjennä kori</a></td>
+                            <td><a href="#" onClick={() => empty()}>Tyhjennä kori</a></td>
                         </tr>
                     </tbody>
                     

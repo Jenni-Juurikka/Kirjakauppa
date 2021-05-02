@@ -28,7 +28,7 @@ export default function Footeri({url}) {
           </div>
           <div className="col-sm-12 col-md-6 col-lg-3">
             <h5>Aukioloajat</h5>
-            {/* <ul className="list-unstyled text-small">
+            <ul className="list-unstyled text-small">
               {hours.map(aukiolo => (
                 <li key={aukiolo.paiva}>
                   {aukiolo.paiva}
@@ -38,7 +38,7 @@ export default function Footeri({url}) {
                   {aukiolo.kiinni}
                   </li>
               ))}
-            </ul> */}
+            </ul>
           </div>
           <div className="col-sm-12 col-md-6 col-lg-3">
             <h5>Yhteystiedot</h5>

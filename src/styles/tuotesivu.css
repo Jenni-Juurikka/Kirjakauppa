@@ -1,9 +1,9 @@
 img{
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .book_name {
-    padding: 30px;
+    padding: 20px;
 }
 
 .funfacts, .review {
@@ -48,13 +48,11 @@ input[type=submit] {
 }
 
 .col-25 {
-  float: left;
   width: 25%;
   margin-top: 6px;
 }
 
 .col-75 {
-  float: left;
   width: 75%;
   margin-top: 6px;
 }

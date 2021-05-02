@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom'; 
 
 export default function Yllapito({url}) {
 
@@ -9,19 +8,20 @@ export default function Yllapito({url}) {
     const [tname , setTname] = useState('');
     const [author , setAuthor] = useState('');
     const [price , setPrice] = useState('');
-    //const [image , setImage] = useState();
+    const [image , setImage] = useState();
+    const [description, setDescription] = useState('');
     const [category_id , setCategory_id] = useState('');
     const [asiakkaat, setAsiakkaat] = useState([]);
     const [tilaukset, setTilaukset] = useState([]);
-    //const [ , set] = useState();
-
     // tuoteryhmät
+
+    // hae tuoteryhmät
     useEffect(() => {
         let status = 0;
         fetch(url + 'yllapito/showtuoteryhmat.php')
         .then(res => {
             status = parseInt(res.status);
-            return res.json()
+            return res.json();
         })
         .then(
             (res) => {
@@ -33,9 +33,10 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
-    }, [])
+        );
+    }, []);
 
+    // lisää tuoteryhmä
     function addTuoteryhma(tr) {
         tr.preventDefault();
         let status = 0;
@@ -63,9 +64,10 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
+        );
     }
 
+    // poista tuoteryhmä
     function deleteTuoteryhma(id) {
         let status = 0;
         fetch(url + 'yllapito/deletetuoteryhma.php', {
@@ -93,16 +95,18 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
+        );
     }
 
     // tuotteet
+
+    // hae tuotteet
     useEffect(() => {
         let status = 0;
         fetch(url + 'yllapito/showtuotteet.php')
         .then(res => {
             status = parseInt(res.status);
-            return res.json()
+            return res.json();
         })
         .then(
             (res) => {
@@ -114,9 +118,10 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
-    }, [])
+        );
+    }, []);
 
+    // lisää tuote
     function addTuote(t) {
         t.preventDefault();
         let status = 0;
@@ -130,7 +135,8 @@ export default function Yllapito({url}) {
                 name: tname,
                 author: author,
                 price: price,
-                //image: image,
+                image: image,
+                description: description,
                 category_id: category_id
             })
         })
@@ -144,7 +150,8 @@ export default function Yllapito({url}) {
                     setTname('');
                     setAuthor('');
                     setPrice('');
-                    //setImage('');
+                    setImage('');
+                    setDescription('')
                     setCategory_id('');
                 } else {
                     alert(res.error);
@@ -152,9 +159,10 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
+        );
     }
 
+    // poista tuote
     function deleteTuote(id) {
         let status = 0;
         fetch(url + 'yllapito/deletetuote.php', {
@@ -182,16 +190,18 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
+        );
     }
 
     // asiakkaat
+
+    // hae asiakkaat
     useEffect(() => {
         let status = 0;
         fetch(url + 'yllapito/showasiakkaat.php')
         .then(res => {
             status = parseInt(res.status);
-            return res.json()
+            return res.json();
         })
         .then(
             (res) => {
@@ -203,16 +213,18 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
-    }, [])
+        );
+    }, []);
 
     // tilaukset
+
+    // hae tilausrivit tilauksen mukaan ryhmiteltynä
     useEffect(() => {
         let status = 0;
         fetch(url + 'yllapito/showtilaukset.php')
         .then(res => {
             status = parseInt(res.status);
-            return res.json()
+            return res.json();
         })
         .then(
             (res) => {
@@ -224,10 +236,11 @@ export default function Yllapito({url}) {
             }, (error) => {
                 alert(error);
             }
-        )
-    }, [])
+        );
+    }, []);
 
 
+    // tulosta kaikki edellä kuvatut
     return (
         <div>
             <h4>Tuoteryhmät</h4>
@@ -241,19 +254,17 @@ export default function Yllapito({url}) {
                     </div>
                 </form>
             </div>
-            <div>
-                <ol>
+            <table className="table" >
+                <tbody>
                     {tuoteryhmat.map(tuoteryhma => (
-                        <table className="table" key={tuoteryhma.id}>
-                            <tr>
-                                <td>{tuoteryhma.id}</td>
-                                <td>{tuoteryhma.name}</td>
-                                <td><a className="delete" onClick={() => deleteTuoteryhma(tuoteryhma.id)} href="#">Poista</a></td>
-                            </tr>
-                        </table>
+                        <tr key={tuoteryhma.id}>
+                            <td>{tuoteryhma.id}</td>
+                            <td>{tuoteryhma.name}</td>
+                            <td><a className="delete" onClick={() => deleteTuoteryhma(tuoteryhma.id)} href="#">Poista</a></td>
+                        </tr>
                     ))}
-                </ol>
-            </div>
+                </tbody>
+            </table>
             <h4>Tuotteet</h4>
             <div>
                 <form onSubmit={addTuote}>
@@ -267,10 +278,13 @@ export default function Yllapito({url}) {
                         <input placeholder="Hinta" value={price} onChange={t => setPrice(t.target.value)}/>
                     </div>
                     <div className="marginia">
-                        {/* <input placeholder="Kuva" value={tname} onChange={t => setImage(t.target.value)}/> */}
+                        <input placeholder="Kuva" value={image} onChange={t => setImage(t.target.value)}/>
                     </div>
                     <div className="marginia">
-                        <input placeholder="Kategoria" value={category_id} onChange={t => setCategory_id(t.target.value)}/>
+                        <input placeholder="Kuvaus" value={description} onChange={t => setDescription(t.target.value)}/>
+                    </div>
+                    <div className="marginia">
+                        <input placeholder="Kategoria" type="number" min="1" value={category_id} onChange={t => setCategory_id(t.target.value)}/>
                     </div>
                     <div>
                         <button className="tilausnappi">Lisää uusi tuote</button>
@@ -278,56 +292,51 @@ export default function Yllapito({url}) {
                 </form>
             </div>
             <h4>Tuotteet</h4>
-            <div>
-                <ol>
+            <table className="table">
+                <tbody>
                     {tuotteet.map(tuote => (
-                        <table className="table" key={tuote.id}>
-                            <tr>
+                            <tr key={tuote.id}>
                                 <td>{tuote.id}</td>
-                                <td>{tuote.name}</td>
+                                <td >{tuote.name}</td>
                                 <td>{tuote.author}</td>
                                 <td>{tuote.price}</td>
                                 <td><img src={url + 'img/img_' + tuote.id + '.png'} className="img-fluid" width="40"/></td>
+                                <td>{tuote.description}</td>
                                 <td>{tuote.category_id}</td>
                                 <td><a className="delete" onClick={() => deleteTuote(tuote.id)} href="#">Poista</a></td>
                             </tr>
-                        </table>
                     ))}
-                </ol>
-            </div>
+                </tbody>
+            </table>
             <h4>Asiakkaat</h4>
-            <div>
-                <ol>
+            <table className="table">
+                <tbody>
                     {asiakkaat.map(asiakas => (
-                        <table className="table" key={asiakas.id}>
-                            <tr>
-                                <td>{asiakas.id}</td>
-                                <td>{asiakas.asnimi}</td>
-                                <td>{asiakas.puhelinro}</td>
-                                <td>{asiakas.osoite}</td>
-                                <td>{asiakas.postitmp}</td>
-                                <td>{asiakas.postinro}</td>
-                                <td>{asiakas.maa}</td>
-                            </tr>
-                        </table>
+                        <tr key={asiakas.astunnus}>
+                            <td>{asiakas.astunnus}</td>
+                            <td>{asiakas.asnimi}</td>
+                            <td>{asiakas.puhelinro}</td>
+                            <td>{asiakas.osoite}</td>
+                            <td>{asiakas.postitmp}</td>
+                            <td>{asiakas.postinro}</td>
+                            <td>{asiakas.maa}</td>
+                        </tr>
                     ))}
-                </ol>
-            </div>
+                </tbody>
+            </table>
             <h4>Tilaukset</h4>
-            <div>
-                <ol>
+            <table className="table">
+                <tbody>
                     {tilaukset.map(tilaus => (
-                        <table className="table" key={tilaus.tilausnro}>
-                            <tr>
-                                <td>{tilaus.tilausnro}</td>
-                                <td>{tilaus.astunnus}</td>
-                                <td>{tilaus.tilauspvm}</td>
-                                <td></td>
-                            </tr>
-                        </table>
+                        <tr key={tilaus.tilausnro}>
+                            <td>{tilaus.tilausnro}</td>
+                            <td>{tilaus.astunnus}</td>
+                            <td>{tilaus.tilauspvm}</td>
+                            <td>{tilaus.name}</td>
+                        </tr>
                     ))}
-                </ol>
-            </div>
+                </tbody>
+            </table>
         </div>
     );
 }

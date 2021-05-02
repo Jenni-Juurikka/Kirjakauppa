@@ -1,7 +1,7 @@
 import './App.css';
 import './styles/colors.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useState, useEffect, useCallback} from 'react';
+import {useState, useEffect} from 'react';
 import {Switch, Route, useLocation} from 'react-router-dom';
 import Footeri from './components/Footeri';
 import Navbar from './components/Navbar';
@@ -31,21 +31,14 @@ function App() {
     if ('cart' in localStorage) {
       setCart(JSON.parse(localStorage.getItem('cart')));
     }
-  }, [])
+  }, []);
 
   // aseta tuoteryhmä
   useEffect(() => {
     if (location.state!==undefined) {
       setCategory({id: location.state.id,name: location.state.name});
     }
-  }, [location.state])
-
-  // aseta tuote 
-  useCallback(() => {
-    if (tuote!==undefined) {
-      setProduct({tuote});
-    }
-  }, [tuote])
+  }, [location.state]);
   
 
   // lisää tuote ostoskoriin
@@ -94,6 +87,7 @@ function App() {
             tuoteryhma={tuoteryhma}
             /*search={searchPhrase}*/ 
             addToCart={addToCart}
+            user={user}
             setProduct={setProduct}
             />}
             exact
