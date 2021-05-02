@@ -11,9 +11,10 @@ export default function Navbar({url, cart, user, search}) {
     const [criteria, setCriteria] = useState('');
 
     useEffect(() => {
+        let address = url + 'products/getcategories.php';
 
          if (criteria !== null) {
-            url + 'search.php/' + criteria;
+            address = url + 'search.php/' + criteria;
          }
 
         async function getCategories() {
