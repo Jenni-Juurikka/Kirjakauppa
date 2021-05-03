@@ -151,7 +151,7 @@ export default function Yllapito({url}) {
                     setAuthor('');
                     setPrice('');
                     setImage('');
-                    setDescription('')
+                    setDescription('');
                     setCategory_id('');
                 } else {
                     alert(res.error);
