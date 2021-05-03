@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import {Link, Redirect} from 'react-router-dom';
-import history from 'history/browser';
+import {Redirect} from 'react-router-dom';
 import './styles/colors.css';
 import './styles/spacing.css';
 
@@ -19,8 +18,8 @@ export default function Home({url, tuoteryhma, search, addToCart, user, setProdu
                     address = url + 'products/getproducts.php/' + tuoteryhma?.id;
                 } else if (tuoteryhma === null /*&& search === null*/) {
                     address = url + 'products/getallproducts.php/';
-                } /*else if (search !== null) {
-                    address = url + 'products/search.php/' + searchphrase;
+                } /* else if (search !== null) {
+                    address = url + 'products/search.php/' + search;
                 }*/
     
                 try {

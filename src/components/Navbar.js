@@ -5,17 +5,17 @@ import Cart from './Cart';
 import '../styles/colors.css';
 import Logout from '../Logout';
 
-export default function Navbar({url, cart, user, search}) {
+export default function Navbar({url, cart, user/*, search*/}) {
 
     const [categories, setCategories] = useState([]);
-    const [criteria, setCriteria] = useState('');
+    //const [criteria, setCriteria] = useState('');
 
     useEffect(() => {
-        let address = url + 'products/getcategories.php';
+        // let address = url + 'products/getcategories.php';
 
-         if (criteria !== null) {
-            address = url + 'search.php/' + criteria;
-         }
+        //  if (criteria !== null) {
+        //     address = url + 'search.php/' + criteria;
+        //  }
 
         async function getCategories() {
             try {
@@ -32,15 +32,15 @@ export default function Navbar({url, cart, user, search}) {
         }
         getCategories();
         
-    }, [criteria]);
+    }, [/*criteria*/]);
 
-    function goSearch(e) {
-        e.preventDefault();
-        setCriteria(criteria);
-    }
+    // function goSearch(e) {
+    //     e.preventDefault();
+    //     setCriteria(criteria);
+    // }
 
     return (
-        <nav className="navbar navbar-expand-md navbar-light">
+        <nav className="navbar navbar-expand-lg navbar-light">
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" 
                 aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -74,12 +74,15 @@ export default function Navbar({url, cart, user, search}) {
                     <li className="nav-item p-1">
                         <a className="nav-link" href="tietoja">Tietoa kaupasta</a>
                     </li>
+                    {/* <li className="nav-item p-1">
+                        <form onSubmit={goSearch}>
+                            <button className="btn btn-secondary">Hae</button>&nbsp;
+                            <input placeholder="Mitä haluat hakea?" value={criteria} onChange={e => setCriteria(e.target.value)}/>
+                        </form>
+                    </li> */}
                 </ul>
             </div>
-            <form onSubmit={goSearch}>
-                <button className="btn btn-secondary">Hae</button>&nbsp;
-                <input placeholder="Mitä haluat hakea?" value={criteria} onChange={e => setCriteria(e.target.value)}/>
-            </form>
+            
             <ul className="navbar-nav ml-auto">
                 <li className="nav-link">
                     <Link id="yp" to="/yllapito">Ylläpito</Link>
